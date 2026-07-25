@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --tropical-green: #007C49;
+  --tropical-yellow: #007C49;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+*:focus {
+  outline: none !important;
+}
+
+*:focus-visible {
+  outline: 2px solid #059669;
+  outline-offset: 2px;
+}
+
+@layer utilities {
+  .bg-dots {
+    background-image: radial-gradient(circle, #05966922 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .bg-dots-light {
+    background-image: radial-gradient(circle, #e5e7eb 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .bg-grid {
+    background-image: linear-gradient(to right, #05966911 1px, transparent 1px),
+      linear-gradient(to bottom, #05966911 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .bg-fade-white {
+    background: linear-gradient(to bottom, transparent, white 40%, white 60%, transparent);
+  }
+}
