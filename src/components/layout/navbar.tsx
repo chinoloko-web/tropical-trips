@@ -64,7 +64,7 @@ export function Navbar() {
           />
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -83,7 +83,7 @@ export function Navbar() {
 
         <button
           className={cn(
-            "p-2.5 rounded-xl transition-colors md:hidden border",
+            "p-2.5 rounded-xl transition-colors lg:hidden border",
             scrolled
               ? "text-gray-900 hover:bg-gray-100 border-gray-200"
               : "text-white hover:bg-white/10 border-white/20"
@@ -98,7 +98,7 @@ export function Navbar() {
       {mobileOpen && (
         <div
           ref={menuRef}
-          className="absolute top-full left-0 right-0 border-t border-gray-100 bg-white px-4 py-6 md:hidden shadow-2xl flex flex-col gap-1"
+          className="absolute top-full left-0 right-0 border-t border-gray-100 bg-white px-4 py-6 lg:hidden shadow-2xl flex flex-col gap-1"
         >
           {navLinks.map((link) => (
             <Link

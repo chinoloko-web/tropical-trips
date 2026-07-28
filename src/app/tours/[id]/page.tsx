@@ -13,7 +13,7 @@ import { TourMap } from "@/components/ui/tour-map";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { tours, testimonials, clientGallery } from "@/lib/data";
+import { tours, testimonials } from "@/lib/data";
 
 const container = {
   hidden: {},
@@ -41,7 +41,7 @@ export default function TourDetailPage() {
     notFound();
   }
 
-  const galleryImages = [tour.image, ...clientGallery.slice(0, 5)];
+  const galleryImages = tour.images || [tour.image];
 
   return (
     <div className="pb-24">
@@ -107,7 +107,7 @@ export default function TourDetailPage() {
           >
             {/* Gallery */}
             <motion.div variants={itemReveal}>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 h-[250px] sm:h-[400px]">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2 h-[300px] sm:h-[400px]">
                 {galleryImages.slice(0, 5).map((img, i) => (
                   <div
                     key={i}
@@ -122,14 +122,7 @@ export default function TourDetailPage() {
                       className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                       onError={(e) => {
                         const target = e.currentTarget;
-                        const fallbacks = [
-                          "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
-                          "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80",
-                          "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&q=80",
-                          "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=800&q=80",
-                          "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
-                        ];
-                        target.src = fallbacks[i % fallbacks.length];
+                        target.style.display = "none";
                       }}
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
@@ -214,7 +207,7 @@ export default function TourDetailPage() {
             {/* ===== SOBRE ESTE TOUR ===== */}
             <motion.div variants={itemReveal}>
               <Card className="overflow-hidden border border-gray-100 shadow-xl bg-white">
-                <CardContent className="p-8">
+                <CardContent className="p-5 sm:p-8">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-tropical-green-50">
                       <Compass className="h-5 w-5 text-tropical-green-600" />
@@ -278,7 +271,7 @@ export default function TourDetailPage() {
               <Card className="overflow-hidden border border-gray-100 shadow-xl bg-white">
                 <div className="relative h-48 overflow-hidden">
                   <img
-                    src={clientGallery[4] || tour.image}
+                    src={tour.images?.[1] || tour.image}
                     alt=""
                     className="h-full w-full object-cover"
                   />
@@ -334,8 +327,8 @@ export default function TourDetailPage() {
                     <div className="absolute left-[19px] top-0 h-full w-0.5 bg-gradient-to-b from-tropical-green-400 to-tropical-green-200 rounded-full" />
                     <ul className="space-y-0">
                       {tour.itinerary.map((step, i) => (
-                        <li key={i} className="relative pb-8 pl-14 last:pb-0">
-                          <div className="absolute left-2.5 top-0 flex h-8 w-8 items-center justify-center rounded-full border-2 border-tropical-green-500 bg-white text-xs font-bold text-tropical-green-600 shadow-sm">
+                        <li key={i} className="relative pb-8 pl-11 sm:pl-14 last:pb-0">
+                          <div className="absolute left-0 sm:left-2.5 top-0 flex h-7 sm:h-8 w-7 sm:w-8 items-center justify-center rounded-full border-2 border-tropical-green-500 bg-white text-[10px] sm:text-xs font-bold text-tropical-green-600 shadow-sm">
                             {i + 1}
                           </div>
                           <div className="rounded-xl bg-gray-50 p-4 transition-all duration-300 hover:bg-tropical-green-50">

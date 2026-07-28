@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { Camera, ChevronRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { clientGallery } from "@/lib/data";
+
 import { useState } from "react";
 
 export function Gallery() {
@@ -26,7 +26,16 @@ export function Gallery() {
         </div>
 
         <div className="mt-12 sm:mt-16 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-          {clientGallery.slice(0, 8).map((img, idx) => (
+          {[
+            "/images/general/IMG_20250405_091919.jpg",
+            "/images/general/IMG_20250405_092000.jpg",
+            "/images/general/IMG_20250405_123007.jpg",
+            "/images/general/IMG_20250406_151631.jpg",
+            "/images/general/IMG_20250407_092309.jpg",
+            "/images/general/IMG_20250408_123720.jpg",
+            "/images/general/IMG_20250408_123826.jpg",
+            "/images/general/IMG_20250408_134701.jpg",
+          ].map((img, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, scale: 0.95 }}

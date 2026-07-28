@@ -5,7 +5,7 @@ import { Mail, MapPin, Send, Phone, Clock, MessageCircle, Check, ArrowRight, Spa
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { siteConfig, tours, clientGallery } from "@/lib/data";
+import { siteConfig, tours } from "@/lib/data";
 import { motion } from "framer-motion";
 
 const benefits = [
@@ -26,7 +26,7 @@ export default function ContactPage() {
       <section className="relative h-[40vh] sm:h-[45vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={clientGallery[3] || "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80"}
+            src="/images/general/IMG_20250405_123007.jpg"
             alt=""
             className="h-full w-full object-cover"
           />
@@ -199,7 +199,7 @@ export default function ContactPage() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="font-bold text-gray-400 text-xs uppercase tracking-wider">Correo Directo</p>
-                  <a href={`mailto:${siteConfig.email}`} className="text-base sm:text-lg font-bold text-gray-900 hover:text-tropical-green-600 transition-colors mt-1 block font-heading truncate">
+                  <a href={`mailto:${siteConfig.email}`} className="text-base sm:text-lg font-bold text-gray-900 hover:text-tropical-green-600 transition-colors mt-1 block font-heading break-all">
                     {siteConfig.email}
                   </a>
                   <p className="text-sm text-gray-500 mt-2 font-sans flex items-center gap-1.5">

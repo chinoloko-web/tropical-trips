@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: "Tropical Trips & Travel",
   tagline: "No es un viaje. Es la historia que vas a contar.",
-  phone: "+506 8888 8888", // Número configurable
+  phone: "+506 8888 8888",
   whatsapp: "50688888888",
   email: "jcaotravel@gmail.com",
   address: "Nicaragua & Costa Rica",
@@ -20,6 +20,7 @@ export interface Tour {
   duration: string;
   location: string;
   image: string;
+  images: string[];
   lat: number;
   lng: number;
   tag?: string;
@@ -40,7 +41,15 @@ export const tours: Tour[] = [
     location: "Granada, Nicaragua",
     lat: 11.9298,
     lng: -85.9529,
-    image: "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?w=1200&q=80",
+    image: "/images/general/IMG_20250404_122121.jpg",
+    images: [
+      "/images/general/IMG_20250404_122121.jpg",
+      "/images/general/IMG_20250404_122122.jpg",
+      "/images/general/IMG_20250404_122124.jpg",
+      "/images/general/IMG_20250411_145735.jpg",
+      "/images/general/IMG_20250418_132555.jpg",
+      "/images/general/IMG_20250418_151723.jpg",
+    ],
     tag: "Cultural",
     includes: [
       "Transporte desde y hasta su hotel",
@@ -83,7 +92,15 @@ export const tours: Tour[] = [
     location: "Rincón de la Vieja, Costa Rica",
     lat: 10.7733,
     lng: -85.3467,
-    image: "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=1200&q=80",
+    image: "/images/amo-el-agua/parque-nacional-rincon-de-la-vieja-namubak5.jpg",
+    images: [
+      "/images/amo-el-agua/parque-nacional-rincon-de-la-vieja-namubak5.jpg",
+      "/images/amo-el-agua/parque-nacional-rincon-de-la-vieja-namubak3.jpg",
+      "/images/amo-el-agua/469864648_8862094807244037_521899354292730642_n.jpg",
+      "/images/amo-el-agua/327152242_612240420628592_7607654935966266291_n.jpg",
+      "/images/amo-el-agua/179556423_3955088637944703_2796304645192351390_n.jpg",
+      "/images/amo-el-agua/CIMG1435.JPG",
+    ],
     tag: "Aventura",
     includes: [
       "Guía Bilingüe",
@@ -125,7 +142,15 @@ export const tours: Tour[] = [
     location: "Volcán Tenorio, Costa Rica",
     lat: 10.6735,
     lng: -84.9906,
-    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80",
+    image: "/images/rio-celeste/IMG_20250401_122522.jpg",
+    images: [
+      "/images/rio-celeste/IMG_20250401_122522.jpg",
+      "/images/rio-celeste/IMG_20250401_122524.jpg",
+      "/images/rio-celeste/IMG_20250401_122609.jpg",
+      "/images/rio-celeste/IMG_20250401_122618.jpg",
+      "/images/rio-celeste/IMG_20250401_122623.jpg",
+      "/images/rio-celeste/IMG_20250401_122626.jpg",
+    ],
     tag: "Naturaleza",
     includes: [
       "Entradas al parque",
@@ -167,7 +192,15 @@ export const tours: Tour[] = [
     location: "Rincón de la Vieja, Costa Rica",
     lat: 10.7733,
     lng: -85.3467,
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&q=80",
+    image: "/images/rincon-de-la-vieja/parque-nacional-rincon-de-la-vieja-namubak3.jpg",
+    images: [
+      "/images/rincon-de-la-vieja/parque-nacional-rincon-de-la-vieja-namubak3.jpg",
+      "/images/rincon-de-la-vieja/parque-nacional-rincon-de-la-vieja-namubak5.jpg",
+      "/images/rincon-de-la-vieja/469864648_8862094807244037_521899354292730642_n.jpg",
+      "/images/rincon-de-la-vieja/327152242_612240420628592_7607654935966266291_n.jpg",
+      "/images/rincon-de-la-vieja/179556423_3955088637944703_2796304645192351390_n.jpg",
+      "/images/rincon-de-la-vieja/ec.jpg",
+    ],
     tag: "Aventura",
     includes: [
       "Transporte desde el hotel",
@@ -212,7 +245,15 @@ export const tours: Tour[] = [
     location: "La Fortuna, Costa Rica",
     lat: 10.4714,
     lng: -84.6452,
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
+    image: "/images/general/IMG_20250818_125447.jpg",
+    images: [
+      "/images/general/IMG_20250818_125447.jpg",
+      "/images/general/IMG_20250818_121608.jpg",
+      "/images/general/IMG_20250706_111644.jpg",
+      "/images/general/IMG_20250706_111649.jpg",
+      "/images/general/IMG_20250706_111659.jpg",
+      "/images/general/IMG_20250708_125119.jpg",
+    ],
     tag: "Popular",
     includes: [
       "Transporte desde tu hotel",
@@ -267,7 +308,7 @@ export const packages: Package[] = [
     price: 299,
     duration: "3 días / 2 noches",
     description: "Perfecto para una escapada rápida y emocionante por volcanes y lagunas.",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
+    image: "/images/general/IMG_20250404_122540.jpg",
     features: [
       "2 noches de hotel seleccionado",
       "2 tours guiados completos",
@@ -289,7 +330,7 @@ export const packages: Package[] = [
     price: 599,
     duration: "5 días / 4 noches",
     description: "La experiencia definitiva para descubrir lo mejor de Nicaragua y Costa Rica.",
-    image: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80",
+    image: "/images/general/IMG_20250419_090054.jpg",
     features: [
       "4 noches de hotel (categoría turista)",
       "4 tours guiados de aventura",
@@ -314,7 +355,7 @@ export const packages: Package[] = [
     price: 999,
     duration: "7 días / 6 noches",
     description: "Lujo, confort y exclusividad total recorriendo senderos y playas exóticas.",
-    image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&q=80",
+    image: "/images/general/IMG_20250706_111649.jpg",
     features: [
       "6 noches de hotel boutique 5★",
       "Tours privados ilimitados",
@@ -430,11 +471,11 @@ export const stats = [
 ];
 
 export const clientGallery = [
-  "https://tropicaltrips.travel/wp-content/uploads/2026/04/Dloo-4DUUAATynw.jpg",
-  "https://tropicaltrips.travel/wp-content/uploads/2026/04/Cascada.jpeg",
-  "https://tropicaltrips.travel/wp-content/uploads/2026/04/Granada-scaled.jpeg",
-  "https://tropicaltrips.travel/wp-content/uploads/2026/04/Laguna.jpeg",
-  "https://tropicaltrips.travel/wp-content/uploads/2026/04/Leon.jpeg",
-  "https://tropicaltrips.travel/wp-content/uploads/2026/04/Ometepe-1.png",
-  "https://tropicaltrips.travel/wp-content/uploads/2026/04/20220615_135828-scaled-800x1000-1.jpg",
+  "/images/general/IMG_20250405_091919.jpg",
+  "/images/general/IMG_20250405_092000.jpg",
+  "/images/general/IMG_20250405_123007.jpg",
+  "/images/general/IMG_20250406_151631.jpg",
+  "/images/general/IMG_20250407_092309.jpg",
+  "/images/general/IMG_20250408_123720.jpg",
+  "/images/general/IMG_20250408_123826.jpg",
 ];

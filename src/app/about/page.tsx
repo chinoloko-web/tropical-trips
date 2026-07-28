@@ -5,7 +5,7 @@ import { Heart, Globe, Shield, Star, Users, MapPin, Quote, Target, Eye, Award, C
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { teamMembers, stats, clientGallery, siteConfig } from "@/lib/data";
+import { teamMembers, stats, siteConfig } from "@/lib/data";
 
 const values = [
   { icon: Heart, title: "Pasión", desc: "Amamos lo que hacemos y se nota en cada experiencia y detalle.", color: "from-pink-500 to-rose-500" },
@@ -33,7 +33,7 @@ export default function AboutPage() {
       <section className="relative h-[40vh] sm:h-[50vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={clientGallery[2] || "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80"}
+            src="/images/general/IMG_20250405_092000.jpg"
             alt="Nosotros"
             className="h-full w-full object-cover"
           />
@@ -97,24 +97,24 @@ export default function AboutPage() {
                 </p>
               </div>
             </motion.div>
-            <motion.div variants={fadeUp} className="grid grid-cols-2 gap-3">
+            <motion.div variants={fadeUp} className="grid grid-cols-2 gap-3 max-h-[400px] sm:max-h-[500px]">
               <div className="rounded-2xl overflow-hidden shadow-lg row-span-2">
                 <img
-                  src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=600&q=80"
+                  src="/images/rio-celeste/IMG_20250401_122522.jpg"
                   alt="Naturaleza"
                   className="h-full w-full object-cover"
                 />
               </div>
               <div className="rounded-2xl overflow-hidden shadow-lg">
                 <img
-                  src="https://images.unsplash.com/photo-1599940824399-b87987ceb72a?w=600&q=80"
+                  src="/images/amo-el-agua/parque-nacional-rincon-de-la-vieja-namubak5.jpg"
                   alt="Cultura"
                   className="h-full w-full object-cover"
                 />
               </div>
               <div className="rounded-2xl overflow-hidden shadow-lg">
                 <img
-                  src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80"
+                  src="/images/general/IMG_20250404_122120.jpg"
                   alt="Aventura"
                   className="h-full w-full object-cover"
                 />

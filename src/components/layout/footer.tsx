@@ -21,16 +21,16 @@ export function Footer() {
                 href={siteConfig.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-xl sm:rounded-2xl bg-white/5 p-3 sm:p-3.5 transition-all duration-300 hover:bg-tropical-yellow-400 hover:text-tropical-green-950 hover:-translate-y-1 shadow-md border border-white/10"
+                className="rounded-xl sm:rounded-2xl bg-white/5 p-3.5 sm:p-3.5 transition-all duration-300 hover:bg-tropical-yellow-400 hover:text-tropical-green-950 hover:-translate-y-1 shadow-md border border-white/10"
                 aria-label="Instagram"
               >
-                <Instagram className="h-4 sm:h-5 w-4 sm:w-5" />
+                <Instagram className="h-5 sm:h-5 w-5 sm:w-5" />
               </a>
               <a
                 href={siteConfig.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-xl sm:rounded-2xl bg-white/5 p-3 sm:p-3.5 transition-all duration-300 hover:bg-tropical-yellow-400 hover:text-tropical-green-950 hover:-translate-y-1 shadow-md border border-white/10"
+                className="rounded-xl sm:rounded-2xl bg-white/5 p-3.5 sm:p-3.5 transition-all duration-300 hover:bg-tropical-yellow-400 hover:text-tropical-green-950 hover:-translate-y-1 shadow-md border border-white/10"
                 aria-label="Facebook"
               >
                 <Facebook className="h-4 sm:h-5 w-4 sm:w-5" />

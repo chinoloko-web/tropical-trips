@@ -45,7 +45,7 @@ export function Testimonials() {
             >
               <Card className="hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 w-full border-gray-100 bg-white rounded-3xl overflow-hidden flex flex-col justify-between group">
                 <div className="h-1.5 w-full bg-gradient-to-r from-tropical-green-400 to-tropical-green-600 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-                <CardContent className="p-8 flex-1 flex flex-col justify-between">
+                <CardContent className="p-5 sm:p-8 flex-1 flex flex-col justify-between">
                   <div>
                     <Quote className="h-8 w-8 text-tropical-green-200 mb-4" />
                     <div className="flex gap-1.5 mb-5">

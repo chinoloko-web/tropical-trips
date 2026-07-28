@@ -27,6 +27,15 @@ const config: Config = {
         sans: ["var(--font-poppins)", "sans-serif"],
         heading: ["var(--font-montserrat)", "sans-serif"],
       },
+      spacing: {
+        "4.5": "1.125rem",
+      },
+      height: {
+        "4.5": "1.125rem",
+      },
+      width: {
+        "4.5": "1.125rem",
+      },
     },
   },
   plugins: [],

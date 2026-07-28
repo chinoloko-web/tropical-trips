@@ -144,7 +144,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="mt-10 flex items-center justify-center gap-6 sm:gap-8 text-xs text-green-200/70"
+            className="mt-10 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:gap-x-8 text-xs text-green-200/70"
           >
             <span className="flex items-center gap-1.5">
               <span className="h-1.5 w-1.5 rounded-full bg-green-400" /> Sin costo extra

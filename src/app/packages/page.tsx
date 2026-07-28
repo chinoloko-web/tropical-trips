@@ -6,7 +6,7 @@ import { Check, Sparkles, ArrowRight, Clock, MapPin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { packages, clientGallery } from "@/lib/data";
+import { packages } from "@/lib/data";
 
 export default function PackagesPage() {
   return (
@@ -15,7 +15,7 @@ export default function PackagesPage() {
       <section className="relative h-[40vh] sm:h-[45vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={clientGallery[4] || "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80"}
+            src="/images/general/IMG_20250406_151631.jpg"
             alt="Paquetes - Volcán"
             className="h-full w-full object-cover"
           />
@@ -44,7 +44,7 @@ export default function PackagesPage() {
               className="flex"
             >
               <Card className={`group overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col w-full bg-white rounded-3xl ${pkg.popular ? "ring-2 ring-tropical-green-500" : ""}`}>
-                <div className="relative h-56 overflow-hidden bg-gray-100">
+                <div className="relative h-48 sm:h-56 overflow-hidden bg-gray-100">
                   <img
                     src={pkg.image}
                     alt={pkg.name}

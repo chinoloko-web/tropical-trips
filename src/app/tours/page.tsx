@@ -6,7 +6,7 @@ import { Clock, MapPin, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { tours, clientGallery } from "@/lib/data";
+import { tours } from "@/lib/data";
 
 export default function ToursPage() {
   return (
@@ -15,7 +15,7 @@ export default function ToursPage() {
       <section className="relative h-[40vh] sm:h-[45vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={clientGallery[1] || "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920&q=80"}
+            src="/images/general/IMG_20250405_091919.jpg"
             alt="Tours - Cascada"
             className="h-full w-full object-cover"
           />
@@ -44,7 +44,7 @@ export default function ToursPage() {
               className="flex"
             >
               <Card className="group overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col w-full bg-white rounded-3xl">
-                <div className="relative h-56 overflow-hidden bg-gray-100">
+                <div className="relative h-48 sm:h-56 overflow-hidden bg-gray-100">
                   <img
                     src={tour.image}
                     alt={tour.name}
