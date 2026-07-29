@@ -252,7 +252,7 @@ export default function AboutPage() {
                 className="flex"
               >
                 <Card className="overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col w-full bg-white group">
-                  <div className="relative h-64 overflow-hidden bg-gray-100">
+                  <div className="relative aspect-[3/4] overflow-hidden bg-gray-100">
                     <img
                       src={member.image}
                       alt={member.name}

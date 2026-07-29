@@ -44,7 +44,7 @@ export default function PackagesPage() {
               className="flex"
             >
               <Card className={`group overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col w-full bg-white rounded-3xl ${pkg.popular ? "ring-2 ring-tropical-green-500" : ""}`}>
-                <div className="relative h-48 sm:h-56 overflow-hidden bg-gray-100">
+                <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
                   <img
                     src={pkg.image}
                     alt={pkg.name}

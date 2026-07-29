@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, notFound } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -42,6 +42,15 @@ export default function TourDetailPage() {
   }
 
   const galleryImages = tour.images || [tour.image];
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightboxIndex(null);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [lightboxIndex]);
 
   return (
     <div className="pb-24">
@@ -107,7 +116,7 @@ export default function TourDetailPage() {
           >
             {/* Gallery */}
             <motion.div variants={itemReveal}>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2 h-[300px] sm:h-[400px]">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-1 sm:gap-2 auto-rows-[100px] sm:auto-rows-[130px]">
                 {galleryImages.slice(0, 5).map((img, i) => (
                   <div
                     key={i}
@@ -145,12 +154,16 @@ export default function TourDetailPage() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4"
+                  className="fixed inset-0 z-50 flex items-center justify-center bg-black/95"
                   onClick={() => setLightboxIndex(null)}
                 >
                   <button
-                    onClick={() => setLightboxIndex(null)}
-                    className="absolute right-4 top-4 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 transition-colors"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setLightboxIndex(null);
+                    }}
+                    className="absolute right-4 top-4 z-50 rounded-full bg-black/50 p-3 text-white hover:bg-black/70 transition-colors shadow-lg"
+                    style={{ width: 48, height: 48 }}
                   >
                     <X className="h-6 w-6" />
                   </button>
@@ -269,7 +282,7 @@ export default function TourDetailPage() {
             {/* ===== EXPERIENCIAS ===== */}
             <motion.div variants={itemReveal}>
               <Card className="overflow-hidden border border-gray-100 shadow-xl bg-white">
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative aspect-[3/1] sm:aspect-[4/1] overflow-hidden">
                   <img
                     src={tour.images?.[1] || tour.image}
                     alt=""

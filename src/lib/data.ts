@@ -41,14 +41,15 @@ export const tours: Tour[] = [
     location: "Granada, Nicaragua",
     lat: 11.9298,
     lng: -85.9529,
-    image: "/images/general/IMG_20250404_122121.jpg",
+    image: "/images/general/IMG_20251001_143234.jpg",
     images: [
-      "/images/general/IMG_20250404_122121.jpg",
-      "/images/general/IMG_20250404_122122.jpg",
-      "/images/general/IMG_20250404_122124.jpg",
-      "/images/general/IMG_20250411_145735.jpg",
-      "/images/general/IMG_20250418_132555.jpg",
-      "/images/general/IMG_20250418_151723.jpg",
+      "/images/general/IMG_20251001_143234.jpg",
+      "/images/general/IMG_20251001_142225.jpg",
+      "/images/general/IMG_20250419_095649.jpg",
+      "/images/general/IMG_20250502_133136.jpg",
+      "/images/general/IMG_20250502_131039.jpg",
+      "/images/general/IMG_20251001_141508.jpg",
+      "/images/general/IMG_20251001_172021.jpg",
     ],
     tag: "Cultural",
     includes: [
@@ -471,11 +472,11 @@ export const stats = [
 ];
 
 export const clientGallery = [
+  "/images/general/IMG_20250418_151723.jpg",
+  "/images/general/IMG_20250706_111644.jpg",
+  "/images/general/IMG_20250418_151725.jpg",
   "/images/general/IMG_20250405_091919.jpg",
   "/images/general/IMG_20250405_092000.jpg",
-  "/images/general/IMG_20250405_123007.jpg",
   "/images/general/IMG_20250406_151631.jpg",
   "/images/general/IMG_20250407_092309.jpg",
-  "/images/general/IMG_20250408_123720.jpg",
-  "/images/general/IMG_20250408_123826.jpg",
 ];
