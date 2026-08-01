@@ -1,13 +1,39 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Camera, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Camera, ChevronRight, X, ChevronLeft } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+
+const galleryImages = [
+  "/images/general/IMG_20250405_091919.jpg",
+  "/images/general/IMG_20250405_092000.jpg",
+  "/images/general/IMG_20250405_123007.jpg",
+  "/images/general/IMG_20250406_151631.jpg",
+  "/images/general/IMG_20250407_092309.jpg",
+  "/images/general/IMG_20250408_123720.jpg",
+  "/images/general/IMG_20250408_123826.jpg",
+  "/images/general/IMG_20250408_134701.jpg",
+];
 
 export function Gallery() {
   const [hovered, setHovered] = useState<number | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    document.body.style.overflow = "hidden";
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightboxIndex(null);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKey);
+    };
+  }, [lightboxIndex]);
 
   return (
     <section className="relative py-24 sm:py-32 overflow-hidden bg-gray-50">
@@ -26,16 +52,7 @@ export function Gallery() {
         </div>
 
         <div className="mt-12 sm:mt-16 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-          {[
-            "/images/general/IMG_20250405_091919.jpg",
-            "/images/general/IMG_20250405_092000.jpg",
-            "/images/general/IMG_20250405_123007.jpg",
-            "/images/general/IMG_20250406_151631.jpg",
-            "/images/general/IMG_20250407_092309.jpg",
-            "/images/general/IMG_20250408_123720.jpg",
-            "/images/general/IMG_20250408_123826.jpg",
-            "/images/general/IMG_20250408_134701.jpg",
-          ].map((img, idx) => (
+          {galleryImages.map((img, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -46,6 +63,7 @@ export function Gallery() {
                 idx === 0 ? "row-span-2 col-span-2" : ""
               } ${idx === 4 ? "sm:col-span-2" : ""}`}
               style={{ aspectRatio: "1/1" }}
+              onClick={() => setLightboxIndex(idx)}
               onMouseEnter={() => setHovered(idx)}
               onMouseLeave={() => setHovered(null)}
             >
@@ -71,6 +89,67 @@ export function Gallery() {
           ))}
         </div>
       </div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightboxIndex !== null &&
+          createPortal(
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[100] bg-black"
+              onClick={() => setLightboxIndex(null)}
+            >
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLightboxIndex(null);
+                }}
+                className="absolute right-4 top-4 z-[110] rounded-full bg-white/15 p-3 text-white hover:bg-white/30 transition-colors shadow-lg"
+                style={{ width: 48, height: 48 }}
+              >
+                <X className="h-6 w-6" />
+              </button>
+
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLightboxIndex((prev) => (prev! - 1 + galleryImages.length) % galleryImages.length);
+                }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/15 p-3 text-white hover:bg-white/30 transition-colors"
+              >
+                <ChevronLeft className="h-6 w-6" />
+              </button>
+
+              <motion.img
+                key={lightboxIndex}
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                src={galleryImages[lightboxIndex]}
+                alt=""
+                className="h-dvh w-full object-cover"
+                onClick={(e) => e.stopPropagation()}
+              />
+
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setLightboxIndex((prev) => (prev! + 1) % galleryImages.length);
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/15 p-3 text-white hover:bg-white/30 transition-colors"
+              >
+                <ChevronRight className="h-6 w-6" />
+              </button>
+
+              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-black/60 px-4 py-2 text-sm text-white">
+                {lightboxIndex + 1} / {galleryImages.length}
+              </div>
+            </motion.div>,
+            document.body
+          )}
+      </AnimatePresence>
     </section>
   );
 }

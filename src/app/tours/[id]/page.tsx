@@ -46,11 +46,15 @@ export default function TourDetailPage() {
 
   useEffect(() => {
     if (lightboxIndex === null) return;
+    document.body.style.overflow = "hidden";
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setLightboxIndex(null);
     };
     window.addEventListener("keydown", handleKey);
-    return () => window.removeEventListener("keydown", handleKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", handleKey);
+    };
   }, [lightboxIndex]);
 
   return (
@@ -157,7 +161,7 @@ export default function TourDetailPage() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95"
+                  className="fixed inset-0 z-[100] bg-black"
                   onClick={() => setLightboxIndex(null)}
                 >
                   <button
@@ -165,7 +169,7 @@ export default function TourDetailPage() {
                       e.stopPropagation();
                       setLightboxIndex(null);
                     }}
-                    className="absolute right-4 top-4 z-[110] rounded-full bg-black/50 p-3 text-white hover:bg-black/70 transition-colors shadow-lg"
+                    className="absolute right-4 top-4 z-[110] rounded-full bg-white/15 p-3 text-white hover:bg-white/30 transition-colors shadow-lg"
                     style={{ width: 48, height: 48 }}
                   >
                     <X className="h-6 w-6" />
@@ -176,19 +180,19 @@ export default function TourDetailPage() {
                       e.stopPropagation();
                       setLightboxIndex((prev) => (prev! - 1 + galleryImages.length) % galleryImages.length);
                     }}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white hover:bg-white/20 transition-colors"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/15 p-3 text-white hover:bg-white/30 transition-colors"
                   >
                     <ChevronLeft className="h-6 w-6" />
                   </button>
 
                   <motion.img
                     key={lightboxIndex}
-                    initial={{ scale: 0.8, opacity: 0 }}
+                    initial={{ scale: 0.9, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    exit={{ scale: 0.8, opacity: 0 }}
+                    exit={{ scale: 0.9, opacity: 0 }}
                     src={galleryImages[lightboxIndex]}
                     alt=""
-                    className="max-h-[85vh] max-w-full rounded-2xl object-contain shadow-2xl"
+                    className="h-dvh w-full object-cover"
                     onClick={(e) => e.stopPropagation()}
                   />
 
@@ -197,12 +201,12 @@ export default function TourDetailPage() {
                       e.stopPropagation();
                       setLightboxIndex((prev) => (prev! + 1) % galleryImages.length);
                     }}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-3 text-white hover:bg-white/20 transition-colors"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/15 p-3 text-white hover:bg-white/30 transition-colors"
                   >
                     <ChevronRight className="h-6 w-6" />
                   </button>
 
-                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-white/10 px-4 py-2 text-sm text-white">
+                  <div className="absolute bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-black/60 px-4 py-2 text-sm text-white">
                     {lightboxIndex + 1} / {galleryImages.length}
                   </div>
                 </motion.div>,
