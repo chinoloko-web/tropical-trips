@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Camera, ChevronRight, X, ChevronLeft } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
@@ -95,65 +95,61 @@ export function Gallery() {
       </div>
 
       {/* Lightbox */}
-      <AnimatePresence>
-        {lightboxIndex !== null &&
-          createPortal(
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[200] bg-black"
-              onClick={() => setLightboxIndex(null)}
+      {lightboxIndex !== null &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-[200] bg-black"
+            onClick={() => setLightboxIndex(null)}
+          >
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setLightboxIndex(null);
+              }}
+              className="absolute right-4 top-4 z-[210] rounded-full bg-white/15 p-3 text-white hover:bg-white/30 transition-colors shadow-lg"
+              style={{ width: 48, height: 48 }}
+              aria-label="Cerrar"
             >
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setLightboxIndex(null);
-                }}
-                className="absolute right-4 top-4 z-[210] rounded-full bg-white/15 p-3 text-white hover:bg-white/30 transition-colors shadow-lg"
-                style={{ width: 48, height: 48 }}
-              >
-                <X className="h-6 w-6" />
-              </button>
+              <X className="h-6 w-6" />
+            </button>
 
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setLightboxIndex((prev) => (prev! - 1 + galleryImages.length) % galleryImages.length);
-                }}
-                className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/15 p-3 text-white hover:bg-white/30 transition-colors"
-              >
-                <ChevronLeft className="h-6 w-6" />
-              </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setLightboxIndex((prev) => (prev! - 1 + galleryImages.length) % galleryImages.length);
+              }}
+              className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/15 p-3 text-white hover:bg-white/30 transition-colors"
+              aria-label="Anterior"
+            >
+              <ChevronLeft className="h-6 w-6" />
+            </button>
 
-              <motion.img
-                key={lightboxIndex}
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.9, opacity: 0 }}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <img
                 src={galleryImages[lightboxIndex]}
                 alt=""
-                className="h-dvh w-full object-cover"
+                className="max-h-full max-w-full object-contain"
                 onClick={(e) => e.stopPropagation()}
               />
+            </div>
 
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setLightboxIndex((prev) => (prev! + 1) % galleryImages.length);
-                }}
-                className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/15 p-3 text-white hover:bg-white/30 transition-colors"
-              >
-                <ChevronRight className="h-6 w-6" />
-              </button>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setLightboxIndex((prev) => (prev! + 1) % galleryImages.length);
+              }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/15 p-3 text-white hover:bg-white/30 transition-colors"
+              aria-label="Siguiente"
+            >
+              <ChevronRight className="h-6 w-6" />
+            </button>
 
-              <div className="absolute bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-black/60 px-4 py-2 text-sm text-white">
-                {lightboxIndex + 1} / {galleryImages.length}
-              </div>
-            </motion.div>,
-            document.body
-          )}
-      </AnimatePresence>
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-black/60 px-4 py-2 text-sm text-white">
+              {lightboxIndex + 1} / {galleryImages.length}
+            </div>
+          </div>,
+          document.body
+        )}
     </section>
   );
 }
