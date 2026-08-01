@@ -182,11 +182,11 @@ export default function TourDetailPage() {
                       e.stopPropagation();
                       setLightboxIndex((prev) => (prev! - 1 + galleryImages.length) % galleryImages.length);
                     }}
-                    className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-[210] rounded-full bg-black/60 p-3.5 sm:p-4 text-white hover:bg-black/80 transition-colors border border-white/20"
-                    style={{ width: 52, height: 52 }}
+                    className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-[210] rounded-full bg-black/60 p-2 text-white hover:bg-black/80 transition-colors border border-white/20"
+                    style={{ width: 36, height: 36 }}
                     aria-label="Anterior"
                   >
-                    <ChevronLeft className="h-7 w-7" />
+                    <ChevronLeft className="h-4 w-4" />
                   </button>
 
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -217,10 +217,10 @@ export default function TourDetailPage() {
                       setLightboxIndex((prev) => (prev! + 1) % galleryImages.length);
                     }}
                     className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-[210] rounded-full bg-black/60 p-3.5 sm:p-4 text-white hover:bg-black/80 transition-colors border border-white/20"
-                    style={{ width: 52, height: 52 }}
+                    style={{ width: 36, height: 36 }}
                     aria-label="Siguiente"
                   >
-                    <ChevronRight className="h-7 w-7" />
+                    <ChevronRight className="h-4 w-4" />
                   </button>
 
                   <div className="absolute bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-black/60 px-4 py-2 text-sm text-white">
