@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { useParams, notFound } from "next/navigation";
 import Link from "next/link";
@@ -37,6 +37,7 @@ export default function TourDetailPage() {
   const params = useParams();
   const tour = tours.find((t) => t.id === params.id);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const touchStartX = useRef(0);
 
   if (!tour) {
     notFound();
@@ -181,10 +182,11 @@ export default function TourDetailPage() {
                       e.stopPropagation();
                       setLightboxIndex((prev) => (prev! - 1 + galleryImages.length) % galleryImages.length);
                     }}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/15 p-3 text-white hover:bg-white/30 transition-colors"
+                    className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 rounded-full bg-black/60 p-3.5 sm:p-4 text-white hover:bg-black/80 transition-colors border border-white/20"
+                    style={{ width: 52, height: 52 }}
                     aria-label="Anterior"
                   >
-                    <ChevronLeft className="h-6 w-6" />
+                    <ChevronLeft className="h-7 w-7" />
                   </button>
 
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -193,6 +195,19 @@ export default function TourDetailPage() {
                       alt=""
                       className="max-h-full max-w-full object-contain"
                       onClick={(e) => e.stopPropagation()}
+                      onTouchStart={(e) => {
+                        touchStartX.current = e.touches[0].clientX;
+                      }}
+                      onTouchEnd={(e) => {
+                        const delta = e.changedTouches[0].clientX - touchStartX.current;
+                        if (Math.abs(delta) > 40) {
+                          setLightboxIndex((prev) =>
+                            delta > 0
+                              ? (prev! - 1 + galleryImages.length) % galleryImages.length
+                              : (prev! + 1) % galleryImages.length
+                          );
+                        }
+                      }}
                     />
                   </div>
 
@@ -201,10 +216,11 @@ export default function TourDetailPage() {
                       e.stopPropagation();
                       setLightboxIndex((prev) => (prev! + 1) % galleryImages.length);
                     }}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/15 p-3 text-white hover:bg-white/30 transition-colors"
+                    className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 rounded-full bg-black/60 p-3.5 sm:p-4 text-white hover:bg-black/80 transition-colors border border-white/20"
+                    style={{ width: 52, height: 52 }}
                     aria-label="Siguiente"
                   >
-                    <ChevronRight className="h-6 w-6" />
+                    <ChevronRight className="h-7 w-7" />
                   </button>
 
                   <div className="absolute bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-black/60 px-4 py-2 text-sm text-white">
