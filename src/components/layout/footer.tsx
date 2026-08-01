@@ -49,11 +49,11 @@ export function Footer() {
             </h4>
             <ul className="space-y-2.5 sm:space-y-3 font-sans">
               {[
-                ["nav.home", "/"],
+                ["nav.inicio", "/"],
                 ["nav.tours", "/tours"],
-                ["nav.packages", "/packages"],
-                ["nav.about", "/about"],
-                ["nav.contact", "/contact"],
+                ["nav.paquetes", "/packages"],
+                ["nav.nosotros", "/about"],
+                ["nav.contacto", "/contact"],
               ].map(([label, href]) => (
                 <li key={label}>
                   <Link

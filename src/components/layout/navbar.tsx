@@ -99,7 +99,7 @@ export function Navbar() {
                   : "text-white/90 hover:text-white drop-shadow-sm"
               )}
             >
-              {link.label}
+              {t(link.label)}
             </Link>
           ))}
         </div>
