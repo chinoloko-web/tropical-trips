@@ -23,7 +23,7 @@ export default function PackageDetailPage() {
           <img src={pkg.image} alt={pkg.name} className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/60 to-black/75" />
         </div>
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 w-full pt-16 sm:pt-20">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 w-full pt-24 sm:pt-28">
           <Link
             href="/packages"
             className="inline-flex items-center gap-1.5 text-sm text-green-200 hover:text-white transition-colors mb-6 group"

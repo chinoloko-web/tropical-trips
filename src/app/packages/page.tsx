@@ -21,7 +21,7 @@ export default function PackagesPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/60 to-black/75" />
         </div>
-        <div className="relative z-10 mx-auto max-w-4xl px-4 pt-16 sm:pt-20 text-center text-white">
+        <div className="relative z-10 mx-auto max-w-4xl px-4 pt-24 sm:pt-28 text-center text-white">
           <Badge variant="accent" className="mb-4">Planes Completos</Badge>
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold font-heading drop-shadow-md">
             Paquetes Todo Incluido
@@ -44,7 +44,7 @@ export default function PackagesPage() {
               className="flex"
             >
               <Card className={`group overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col w-full bg-white rounded-3xl ${pkg.popular ? "ring-2 ring-tropical-green-500" : ""}`}>
-                <div className="relative aspect-[3/4] sm:aspect-[4/3] overflow-hidden bg-gray-100">
+                <div className="relative aspect-square overflow-hidden bg-gray-100">
                   <img
                     src={pkg.image}
                     alt={pkg.name}

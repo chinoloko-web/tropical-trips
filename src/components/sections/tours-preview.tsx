@@ -42,7 +42,7 @@ export function ToursPreview() {
               className="flex"
             >
               <Card className="group overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 flex flex-col w-full bg-white rounded-3xl">
-                <div className="relative aspect-[3/4] sm:aspect-[4/3] overflow-hidden bg-gray-100">
+                <div className="relative aspect-square overflow-hidden bg-gray-100">
                   <img
                     src={tour.image}
                     alt={tour.name}

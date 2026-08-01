@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { useParams, notFound } from "next/navigation";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -66,7 +67,7 @@ export default function TourDetailPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 w-full pt-16 sm:pt-20">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 w-full pt-24 sm:pt-28">
           <Link
             href="/tours"
             className="inline-flex items-center gap-1.5 text-sm text-green-200 hover:text-white transition-colors mb-6 group"
@@ -124,7 +125,7 @@ export default function TourDetailPage() {
                     className={`relative overflow-hidden rounded-xl sm:rounded-2xl bg-gray-200 group cursor-pointer ${
                       i === 0 ? "col-span-2 row-span-2" : "col-span-1 row-span-1"
                     }`}
-                    style={{ aspectRatio: i === 0 ? "3/4" : "3/4" }}
+                    style={{ aspectRatio: "1/1" }}
                   >
                     <img
                       src={img}
@@ -150,7 +151,8 @@ export default function TourDetailPage() {
 
             {/* Lightbox */}
             <AnimatePresence>
-              {lightboxIndex !== null && (
+              {lightboxIndex !== null &&
+                createPortal(
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
@@ -203,7 +205,8 @@ export default function TourDetailPage() {
                   <div className="absolute bottom-6 left-1/2 -translate-x-1/2 rounded-full bg-white/10 px-4 py-2 text-sm text-white">
                     {lightboxIndex + 1} / {galleryImages.length}
                   </div>
-                </motion.div>
+                </motion.div>,
+                document.body
               )}
             </AnimatePresence>
 
