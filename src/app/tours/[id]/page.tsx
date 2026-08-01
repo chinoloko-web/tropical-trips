@@ -116,7 +116,7 @@ export default function TourDetailPage() {
           >
             {/* Gallery */}
             <motion.div variants={itemReveal}>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-1 sm:gap-2 auto-rows-[120px] sm:auto-rows-[160px]">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-1 sm:gap-2 auto-rows-[140px] sm:auto-rows-[160px]">
                 {galleryImages.slice(0, 5).map((img, i) => (
                   <div
                     key={i}

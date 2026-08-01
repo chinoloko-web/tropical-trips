@@ -45,7 +45,7 @@ export function Gallery() {
               className={`relative overflow-hidden rounded-2xl bg-gray-200 cursor-pointer group ${
                 idx === 0 ? "row-span-2 col-span-2" : ""
               } ${idx === 4 ? "sm:col-span-2" : ""}`}
-              style={{ aspectRatio: idx === 0 ? "auto" : "1" }}
+              style={{ aspectRatio: idx === 0 ? "auto" : "4/5" }}
               onMouseEnter={() => setHovered(idx)}
               onMouseLeave={() => setHovered(null)}
             >

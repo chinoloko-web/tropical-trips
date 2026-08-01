@@ -44,7 +44,7 @@ export default function ToursPage() {
               className="flex"
             >
               <Card className="group overflow-hidden border border-gray-100 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col w-full bg-white rounded-3xl">
-                <div className="relative h-56 sm:h-64 overflow-hidden bg-gray-100">
+                <div className="relative aspect-[3/4] sm:aspect-[4/3] overflow-hidden bg-gray-100">
                   <img
                     src={tour.image}
                     alt={tour.name}

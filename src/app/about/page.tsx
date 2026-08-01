@@ -114,7 +114,7 @@ export default function AboutPage() {
               </div>
               <div className="rounded-2xl overflow-hidden shadow-lg">
                 <img
-                  src="/images/general/IMG_20250404_122120.jpg"
+                  src="/images/rio-celeste/IMG_20250404_122120.jpg"
                   alt="Aventura"
                   className="h-full w-full object-cover"
                 />
