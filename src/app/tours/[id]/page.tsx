@@ -60,7 +60,7 @@ export default function TourDetailPage() {
   return (
     <div className="pb-24">
       {/* ===== HERO ===== */}
-      <section className="relative h-[45vh] sm:h-[60vh] min-h-[350px] sm:min-h-[500px] flex items-center justify-center overflow-hidden">
+      <section className="relative flex items-center justify-center overflow-hidden py-24 sm:py-0 sm:h-[60vh] sm:min-h-[500px]">
         <div className="absolute inset-0">
           <img
             src={tour.image}
@@ -71,7 +71,7 @@ export default function TourDetailPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 w-full pt-24 sm:pt-28">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 w-full sm:pt-28">
           <Link
             href="/tours"
             className="inline-flex items-center gap-1.5 text-sm text-green-200 hover:text-white transition-colors mb-6 group"

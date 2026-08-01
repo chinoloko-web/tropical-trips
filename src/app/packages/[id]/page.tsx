@@ -18,12 +18,12 @@ export default function PackageDetailPage() {
   return (
     <div className="pb-24">
       {/* Hero */}
-      <section className="relative h-[40vh] sm:h-[50vh] min-h-[300px] sm:min-h-[400px] flex items-center justify-center overflow-hidden">
+      <section className="relative flex items-center justify-center overflow-hidden py-24 sm:py-0 sm:h-[50vh] sm:min-h-[400px]">
         <div className="absolute inset-0">
           <img src={pkg.image} alt={pkg.name} className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/60 to-black/75" />
         </div>
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 w-full pt-24 sm:pt-28">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 w-full sm:pt-28">
           <Link
             href="/packages"
             className="inline-flex items-center gap-1.5 text-sm text-green-200 hover:text-white transition-colors mb-6 group"

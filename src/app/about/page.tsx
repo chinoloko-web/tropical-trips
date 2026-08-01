@@ -30,7 +30,7 @@ export default function AboutPage() {
   return (
     <div className="pb-24">
       {/* ===== HERO ===== */}
-      <section className="relative h-[40vh] sm:h-[50vh] flex items-center justify-center overflow-hidden">
+      <section className="relative flex items-center justify-center overflow-hidden py-24 sm:py-0 sm:h-[50vh]">
         <div className="absolute inset-0">
           <img
             src="/images/general/IMG_20250405_092000.jpg"
@@ -39,7 +39,7 @@ export default function AboutPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/60 to-black/75" />
         </div>
-        <div className="relative z-10 mx-auto max-w-4xl px-4 pt-24 sm:pt-28 text-center text-white">
+        <div className="relative z-10 mx-auto max-w-4xl px-4 sm:pt-28 text-center text-white">
           <Badge variant="accent" className="mb-4">Nosotros</Badge>
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold font-heading drop-shadow-md">
             Somos Tropical Trips & Travel
