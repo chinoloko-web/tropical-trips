@@ -182,7 +182,7 @@ export default function TourDetailPage() {
                       e.stopPropagation();
                       setLightboxIndex((prev) => (prev! - 1 + galleryImages.length) % galleryImages.length);
                     }}
-                    className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 rounded-full bg-black/60 p-3.5 sm:p-4 text-white hover:bg-black/80 transition-colors border border-white/20"
+                    className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-[210] rounded-full bg-black/60 p-3.5 sm:p-4 text-white hover:bg-black/80 transition-colors border border-white/20"
                     style={{ width: 52, height: 52 }}
                     aria-label="Anterior"
                   >
@@ -216,7 +216,7 @@ export default function TourDetailPage() {
                       e.stopPropagation();
                       setLightboxIndex((prev) => (prev! + 1) % galleryImages.length);
                     }}
-                    className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 rounded-full bg-black/60 p-3.5 sm:p-4 text-white hover:bg-black/80 transition-colors border border-white/20"
+                    className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-[210] rounded-full bg-black/60 p-3.5 sm:p-4 text-white hover:bg-black/80 transition-colors border border-white/20"
                     style={{ width: 52, height: 52 }}
                     aria-label="Siguiente"
                   >
