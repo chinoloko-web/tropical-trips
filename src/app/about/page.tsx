@@ -33,7 +33,7 @@ export default function AboutPage() {
       <section className="relative flex items-center justify-center overflow-hidden py-24 sm:py-0 sm:h-[50vh]">
         <div className="absolute inset-0">
           <img
-            src="/images/general/IMG_20250405_092000.jpg"
+            src="/images/general/IMG_20250418_151723.jpg"
             alt="Nosotros"
             className="h-full w-full object-cover"
           />
