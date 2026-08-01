@@ -21,7 +21,7 @@ export default function PackagesPage() {
           />
           <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/60 to-black/75" />
         </div>
-        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center text-white">
+        <div className="relative z-10 mx-auto max-w-4xl px-4 pt-16 sm:pt-20 text-center text-white">
           <Badge variant="accent" className="mb-4">Planes Completos</Badge>
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold font-heading drop-shadow-md">
             Paquetes Todo Incluido

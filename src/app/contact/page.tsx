@@ -33,7 +33,7 @@ export default function ContactPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/60 to-black/70" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10" />
         </div>
-        <div className="relative z-10 mx-auto max-w-4xl px-4 text-center text-white">
+        <div className="relative z-10 mx-auto max-w-4xl px-4 pt-16 sm:pt-20 text-center text-white">
           <Badge variant="accent" className="mb-4">Contacto</Badge>
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold font-heading drop-shadow-md leading-tight">
             Hablemos de tu <span className="bg-gradient-to-r from-tropical-yellow-300 to-tropical-yellow-400 bg-clip-text text-transparent">Aventura</span>

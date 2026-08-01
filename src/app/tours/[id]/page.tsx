@@ -66,7 +66,7 @@ export default function TourDetailPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 w-full">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 w-full pt-16 sm:pt-20">
           <Link
             href="/tours"
             className="inline-flex items-center gap-1.5 text-sm text-green-200 hover:text-white transition-colors mb-6 group"
@@ -116,7 +116,7 @@ export default function TourDetailPage() {
           >
             {/* Gallery */}
             <motion.div variants={itemReveal}>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-1 sm:gap-2 auto-rows-[140px] sm:auto-rows-[160px]">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-1 sm:gap-2">
                 {galleryImages.slice(0, 5).map((img, i) => (
                   <div
                     key={i}
@@ -124,6 +124,7 @@ export default function TourDetailPage() {
                     className={`relative overflow-hidden rounded-xl sm:rounded-2xl bg-gray-200 group cursor-pointer ${
                       i === 0 ? "col-span-2 row-span-2" : "col-span-1 row-span-1"
                     }`}
+                    style={{ aspectRatio: i === 0 ? "3/4" : "3/4" }}
                   >
                     <img
                       src={img}
@@ -154,7 +155,7 @@ export default function TourDetailPage() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="fixed inset-0 z-50 flex items-center justify-center bg-black/95"
+                  className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95"
                   onClick={() => setLightboxIndex(null)}
                 >
                   <button
@@ -162,7 +163,7 @@ export default function TourDetailPage() {
                       e.stopPropagation();
                       setLightboxIndex(null);
                     }}
-                    className="absolute right-4 top-4 z-50 rounded-full bg-black/50 p-3 text-white hover:bg-black/70 transition-colors shadow-lg"
+                    className="absolute right-4 top-4 z-[110] rounded-full bg-black/50 p-3 text-white hover:bg-black/70 transition-colors shadow-lg"
                     style={{ width: 48, height: 48 }}
                   >
                     <X className="h-6 w-6" />
