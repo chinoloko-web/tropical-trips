@@ -17,12 +17,21 @@ const navLinks = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const onLightboxChange = (e: Event) => {
+      setLightboxOpen((e as CustomEvent).detail === "open");
+    };
+    window.addEventListener("lightbox:change", onLightboxChange as EventListener);
+    return () => window.removeEventListener("lightbox:change", onLightboxChange as EventListener);
   }, []);
 
   useEffect(() => {
@@ -50,6 +59,7 @@ export function Navbar() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        lightboxOpen && "-translate-y-full",
         scrolled
           ? "bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-lg py-3"
           : "bg-transparent py-5"

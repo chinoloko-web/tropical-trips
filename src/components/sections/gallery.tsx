@@ -23,7 +23,11 @@ export function Gallery() {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    if (lightboxIndex === null) return;
+    if (lightboxIndex === null) {
+      window.dispatchEvent(new CustomEvent("lightbox:change", { detail: "close" }));
+      return;
+    }
+    window.dispatchEvent(new CustomEvent("lightbox:change", { detail: "open" }));
     document.body.style.overflow = "hidden";
     const handleKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setLightboxIndex(null);
@@ -98,7 +102,7 @@ export function Gallery() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[100] bg-black"
+              className="fixed inset-0 z-[200] bg-black"
               onClick={() => setLightboxIndex(null)}
             >
               <button
@@ -106,7 +110,7 @@ export function Gallery() {
                   e.stopPropagation();
                   setLightboxIndex(null);
                 }}
-                className="absolute right-4 top-4 z-[110] rounded-full bg-white/15 p-3 text-white hover:bg-white/30 transition-colors shadow-lg"
+                className="absolute right-4 top-4 z-[210] rounded-full bg-white/15 p-3 text-white hover:bg-white/30 transition-colors shadow-lg"
                 style={{ width: 48, height: 48 }}
               >
                 <X className="h-6 w-6" />
