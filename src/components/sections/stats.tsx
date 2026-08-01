@@ -1,10 +1,12 @@
 "use client";
 
 import { stats } from "@/lib/data";
+import { useI18n } from "@/lib/i18n";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 
 export function Stats() {
+  const { t } = useI18n();
   return (
     <section className="relative z-20 mx-auto max-w-5xl px-4 -mt-12 sm:-mt-16">
       <motion.div
@@ -35,7 +37,7 @@ export function Stats() {
                 </p>
               </div>
               <p className="mt-1 text-[10px] sm:text-xs font-bold sm:font-semibold text-gray-500 uppercase tracking-wide sm:tracking-wider font-sans">
-                {stat.label}
+                {t(`stats.${idx + 1}`)}
               </p>
             </motion.div>
           ))}

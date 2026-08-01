@@ -2,19 +2,21 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Languages } from "lucide-react";
 import { siteConfig } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { useI18n } from "@/lib/i18n";
 
 const navLinks = [
-  { href: "/", label: "Inicio" },
-  { href: "/tours", label: "Tours" },
-  { href: "/packages", label: "Paquetes" },
-  { href: "/about", label: "Nosotros" },
-  { href: "/contact", label: "Contacto" },
+  { href: "/", label: "nav.inicio" },
+  { href: "/tours", label: "nav.tours" },
+  { href: "/packages", label: "nav.paquetes" },
+  { href: "/about", label: "nav.nosotros" },
+  { href: "/contact", label: "nav.contacto" },
 ];
 
 export function Navbar() {
+  const { t, lang, setLang } = useI18n();
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -103,6 +105,20 @@ export function Navbar() {
         </div>
 
         <button
+          onClick={() => setLang(lang === "es" ? "en" : "es")}
+          className={cn(
+            "hidden lg:flex items-center gap-1.5 rounded-full px-3.5 py-2 text-xs font-bold border transition-colors",
+            scrolled
+              ? "text-gray-700 hover:bg-gray-100 border-gray-200"
+              : "text-white hover:bg-white/10 border-white/20"
+          )}
+          aria-label="Cambiar idioma / Switch language"
+        >
+          <Languages className="h-4 w-4" />
+          {lang === "es" ? "EN" : "ES"}
+        </button>
+
+        <button
           className={cn(
             "p-2.5 rounded-xl transition-colors lg:hidden border",
             scrolled
@@ -110,7 +126,7 @@ export function Navbar() {
               : "text-white hover:bg-white/10 border-white/20"
           )}
           onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-label={mobileOpen ? t("nav.closeMenu") : t("nav.openMenu")}
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
@@ -128,9 +144,16 @@ export function Navbar() {
               className="block rounded-xl px-4 py-3 text-base font-bold text-gray-800 hover:bg-tropical-green-50 hover:text-tropical-green-700 transition-all"
               onClick={() => setMobileOpen(false)}
             >
-              {link.label}
+              {t(link.label)}
             </Link>
           ))}
+          <button
+            onClick={() => setLang(lang === "es" ? "en" : "es")}
+            className="mt-2 flex items-center justify-center gap-2 rounded-xl border border-gray-200 px-4 py-3 text-base font-bold text-gray-800 hover:bg-tropical-green-50 transition-all"
+          >
+            <Languages className="h-4 w-4" />
+            {lang === "es" ? "English" : "Español"}
+          </button>
         </div>
       )}
     </header>

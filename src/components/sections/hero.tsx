@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { MapPin, Star, ChevronDown, Phone } from "lucide-react";
 import { clientGallery, siteConfig } from "@/lib/data";
+import { useI18n } from "@/lib/i18n";
 
 const floatingShapes = [
   { size: 16, x: "10%", y: "20%", delay: 0, duration: 6, color: "bg-tropical-yellow-400/20" },
@@ -16,6 +17,7 @@ const floatingShapes = [
 ];
 
 export function Hero() {
+  const { t } = useI18n();
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -94,7 +96,7 @@ export function Hero() {
             className="mb-4 sm:mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 sm:px-5 py-1.5 sm:py-2.5 backdrop-blur-md border border-white/10"
           >
             <Star className="h-3.5 sm:h-4 w-3.5 sm:w-4 text-tropical-yellow-400 fill-tropical-yellow-400" />
-            <span className="text-xs sm:text-sm text-white font-medium">4.9/5 · Más de 1000 viajeros felices</span>
+            <span className="text-xs sm:text-sm text-white font-medium">{t("hero.rating")}</span>
           </motion.div>
 
           {/* Title */}
@@ -104,9 +106,9 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight text-white font-heading px-2"
           >
-            {siteConfig.tagline.split(".")[0]}.<br />
+            {t("hero.tagline1")}.<br />
             <span className="bg-gradient-to-r from-tropical-yellow-300 via-tropical-yellow-400 to-tropical-green-400 bg-clip-text text-transparent">
-              {siteConfig.tagline.split(".")[1] || "La historia que vas a contar"}
+              {t("hero.tagline2")}
             </span>
           </motion.h1>
 
@@ -117,7 +119,7 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="mx-auto mt-4 sm:mt-6 max-w-2xl text-base sm:text-lg md:text-xl text-green-100/90 font-sans px-2 leading-relaxed"
           >
-            Descubre Centroamérica con experiencias diseñadas a tu medida en Nicaragua y Costa Rica. Naturaleza, aventura y cultura en un solo viaje.
+            {t("hero.subtitle")}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -129,12 +131,12 @@ export function Hero() {
           >
             <a href="#tours" className="w-full sm:w-auto">
               <Button variant="accent" size="xl" className="w-full sm:w-auto shadow-xl shadow-tropical-yellow-400/30">
-                <MapPin className="h-5 w-5" /> Explorar Tours
+                <MapPin className="h-5 w-5" /> {t("hero.ctaTours")}
               </Button>
             </a>
             <a href="/contact" className="w-full sm:w-auto">
               <Button variant="white" size="xl" className="w-full sm:w-auto group">
-                <Phone className="h-5 w-5 text-tropical-green-600 group-hover:rotate-12 transition-transform" /> Reservar Ahora
+                <Phone className="h-5 w-5 text-tropical-green-600 group-hover:rotate-12 transition-transform" /> {t("hero.ctaReserve")}
               </Button>
             </a>
           </motion.div>
@@ -147,13 +149,13 @@ export function Hero() {
             className="mt-10 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 sm:gap-x-8 text-xs text-green-200/70"
           >
             <span className="flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-green-400" /> Sin costo extra
+              <span className="h-1.5 w-1.5 rounded-full bg-green-400" /> {t("hero.trust1")}
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-green-400" /> Cancelación gratis
+              <span className="h-1.5 w-1.5 rounded-full bg-green-400" /> {t("hero.trust2")}
             </span>
             <span className="flex items-center gap-1.5">
-              <span className="h-1.5 w-1.5 rounded-full bg-green-400" /> Guías locales
+              <span className="h-1.5 w-1.5 rounded-full bg-green-400" /> {t("hero.trust3")}
             </span>
           </motion.div>
         </motion.div>
@@ -171,7 +173,7 @@ export function Hero() {
           transition={{ duration: 2, repeat: Infinity }}
           className="flex flex-col items-center gap-2"
         >
-          <span className="text-[10px] text-white/50 font-medium uppercase tracking-widest">Descubre</span>
+          <span className="text-[10px] text-white/50 font-medium uppercase tracking-widest">{t("hero.scroll")}</span>
           <div className="h-10 w-6 rounded-full border-2 border-white/30 p-1">
             <motion.div
               animate={{ y: [0, 10, 0] }}

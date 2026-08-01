@@ -5,10 +5,11 @@ import { ArrowRight, Clock, MapPin, Compass } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { tours } from "@/lib/data";
+import { useI18n } from "@/lib/i18n";
 import { motion } from "framer-motion";
 
 export function ToursPreview() {
+  const { t, tours } = useI18n();
   const previewTours = tours.slice(0, 3);
 
   return (
@@ -22,12 +23,12 @@ export function ToursPreview() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <div className="text-center max-w-2xl mx-auto">
-          <Badge variant="secondary">Nuestras Experiencias</Badge>
+          <Badge variant="secondary">{t("tp.badge")}</Badge>
           <h2 className="mt-4 text-2xl sm:text-4xl font-bold text-gray-900 font-heading">
-            Tours que inspiran historias
+            {t("tp.title")}
           </h2>
           <p className="mt-4 text-gray-500 font-sans">
-            Desde excursiones de un día hasta senderos y escapadas a medida. Elige la aventura ideal y vívela al máximo.
+            {t("tp.desc")}
           </p>
         </div>
 
@@ -81,8 +82,7 @@ export function ToursPreview() {
 
                     <Link href={`/tours/${tour.id}`} className="block mt-5">
                       <Button variant="outline" className="w-full font-bold flex items-center justify-center gap-2 group/btn">
-                        Ver Detalles <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
-                      </Button>
+                        {t("tp.details")} <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />                      </Button>
                     </Link>
                   </div>
                 </CardContent>
@@ -94,7 +94,7 @@ export function ToursPreview() {
         <div className="mt-16 text-center">
           <Link href="/tours">
             <Button variant="secondary" size="lg" className="font-bold shadow-lg shadow-tropical-green-500/25">
-              <Compass className="h-5 w-5" /> Ver Todos los Tours
+              <Compass className="h-5 w-5" /> {t("tp.all")}
             </Button>
           </Link>
         </div>

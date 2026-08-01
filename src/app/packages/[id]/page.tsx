@@ -7,9 +7,10 @@ import { ArrowLeft, Check, Clock, MapPin, Route, Sparkles } from "lucide-react";
 import { NivewayButton } from "@/components/ui/niveway-button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { packages } from "@/lib/data";
+import { useI18n } from "@/lib/i18n";
 
 export default function PackageDetailPage() {
+  const { t, packages } = useI18n();
   const params = useParams();
   const pkg = packages.find((p) => p.id === params.id);
 
@@ -29,12 +30,12 @@ export default function PackageDetailPage() {
             className="inline-flex items-center gap-1.5 text-sm text-green-200 hover:text-white transition-colors mb-6 group"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-            Volver a paquetes
+            {t("pd.back")}
           </Link>
           <div className="max-w-3xl">
             {pkg.popular && (
               <Badge variant="default" className="mb-4 bg-tropical-green-600 text-white font-bold gap-1">
-                <Sparkles className="h-3.5 w-3.5 fill-white" /> Recomendado
+                <Sparkles className="h-3.5 w-3.5 fill-white" /> {t("pd.recommended")}
               </Badge>
             )}
             <h1 className="text-3xl sm:text-5xl font-bold font-heading text-white drop-shadow-lg leading-tight">
@@ -70,7 +71,7 @@ export default function PackageDetailPage() {
                 <CardContent className="p-8">
                   <h2 className="text-lg font-bold text-gray-900 font-heading mb-6 flex items-center gap-2">
                     <Check className="h-5 w-5 text-tropical-green-600" />
-                    ¿Qué incluye este paquete?
+                    {t("pd.includes")}
                   </h2>
                   <div className="grid gap-4 sm:grid-cols-2">
                     {pkg.features.map((f) => (
@@ -86,7 +87,7 @@ export default function PackageDetailPage() {
               </Card>
             </motion.div>
 
-            {/* Itinerario */}
+            {/* {t("pd.itinerary")} */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -99,8 +100,8 @@ export default function PackageDetailPage() {
                       <Route className="h-5 w-5 text-tropical-green-600" />
                     </div>
                     <div>
-                      <h2 className="text-lg font-bold text-gray-900 font-heading">Itinerario</h2>
-                      <p className="text-xs text-gray-500">Día a día del paquete</p>
+                      <h2 className="text-lg font-bold text-gray-900 font-heading">{t("pd.itinerary")}</h2>
+                      <p className="text-xs text-gray-500">{t("pd.itinerarySub")}</p>
                     </div>
                   </div>
                   <div className="relative">
@@ -135,7 +136,7 @@ export default function PackageDetailPage() {
           >
             <div className="rounded-2xl border border-gray-100 bg-white shadow-xl overflow-hidden">
               <div className="bg-gradient-to-r from-tropical-green-600 to-tropical-green-700 px-6 py-4">
-                <p className="text-xs font-medium text-green-100 uppercase tracking-wider">Precio por persona</p>
+                <p className="text-xs font-medium text-green-100 uppercase tracking-wider">{t("pd.price")}</p>
                 <div className="flex items-baseline gap-1">
                   <span className="text-4xl font-bold text-white">${pkg.price}</span>
                   <span className="text-sm text-green-200/80">USD</span>
@@ -143,26 +144,26 @@ export default function PackageDetailPage() {
               </div>
               <div className="p-6 space-y-5">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-500">Duración</span>
+                  <span className="text-gray-500">{t("pd.duration")}</span>
                   <span className="font-medium text-gray-800">{pkg.duration}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-500">Impuestos</span>
-                  <span className="font-medium text-green-600">Incluidos</span>
+                  <span className="text-gray-500">{t("pd.taxes")}</span>
+                  <span className="font-medium text-green-600">{t("pd.included")}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-500">Cancelación</span>
-                  <span className="font-medium text-green-600">Gratuita</span>
+                  <span className="text-gray-500">{t("pd.cancel")}</span>
+                  <span className="font-medium text-green-600">{t("pd.free")}</span>
                 </div>
                 <div className="border-t border-gray-100 pt-5">
                   <NivewayButton />
-                  <p className="mt-3 text-center text-xs text-gray-400">Los espacios se llenan rápido.</p>
+                  <p className="mt-3 text-center text-xs text-gray-400">{t("pd.hurry")}</p>
                 </div>
               </div>
             </div>
 
             <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-xl">
-              <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">Info rápida</h4>
+              <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">{t("pd.info")}</h4>
               <ul className="space-y-3">
                 <li className="flex items-center gap-3 text-sm text-gray-600">
                   <Clock className="h-4 w-4 text-tropical-green-600" />
@@ -170,11 +171,11 @@ export default function PackageDetailPage() {
                 </li>
                 <li className="flex items-center gap-3 text-sm text-gray-600">
                   <MapPin className="h-4 w-4 text-tropical-green-600" />
-                  Nicaragua & Costa Rica
+                  {t("pd.region")}
                 </li>
                 <li className="flex items-center gap-3 text-sm text-gray-600">
                   <Check className="h-4 w-4 text-tropical-green-600" />
-                  Todo incluido
+                  {t("pd.allIncluded")}
                 </li>
               </ul>
             </div>

@@ -1,8 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import { Instagram, Facebook, Mail, MapPin, Phone, ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/lib/data";
+import { useI18n } from "@/lib/i18n";
 
 export function Footer() {
+  const { t } = useI18n();
   return (
     <footer className="bg-black to-tropical-green-950 text-white border-t border-white/5">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:py-16 sm:px-6 lg:px-8">
@@ -41,22 +45,22 @@ export function Footer() {
           {/* Quick Links */}
           <div className="sm:col-span-1 lg:col-span-3 space-y-3 sm:space-y-4">
             <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-tropical-yellow-400 font-heading">
-              Enlaces
+              {t("ft.links")}
             </h4>
             <ul className="space-y-2.5 sm:space-y-3 font-sans">
               {[
-                ["Inicio", "/"],
-                ["Tours", "/tours"],
-                ["Paquetes", "/packages"],
-                ["Nosotros", "/about"],
-                ["Contacto", "/contact"],
+                ["nav.home", "/"],
+                ["nav.tours", "/tours"],
+                ["nav.packages", "/packages"],
+                ["nav.about", "/about"],
+                ["nav.contact", "/contact"],
               ].map(([label, href]) => (
                 <li key={label}>
                   <Link
                     href={href}
                     className="text-sm text-gray-300 transition-colors hover:text-tropical-yellow-300 flex items-center gap-1 group w-fit"
                   >
-                    <span>{label}</span>
+                    <span>{t(label)}</span>
                     <ArrowUpRight className="h-3 w-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
                   </Link>
                 </li>
@@ -67,7 +71,7 @@ export function Footer() {
           {/* Contact Details */}
           <div className="sm:col-span-2 lg:col-span-4 space-y-3 sm:space-y-4">
             <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-tropical-yellow-400 font-heading">
-              Contacto Directo
+              {t("ft.contact")}
             </h4>
             <ul className="space-y-3 sm:space-y-3.5 font-sans text-sm text-gray-300">
               <li className="flex items-center gap-3">
@@ -97,7 +101,7 @@ export function Footer() {
 
         {/* Bottom Line */}
         <div className="mt-10 sm:mt-12 border-t border-white/5 pt-6 sm:pt-8 text-center text-xs text-gray-500 font-sans">
-          <p>© {new Date().getFullYear()} {siteConfig.name}. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} {siteConfig.name}. {t("ft.rights")}</p>
         </div>
       </div>
     </footer>

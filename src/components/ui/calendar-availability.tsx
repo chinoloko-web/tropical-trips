@@ -3,13 +3,17 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useI18n } from "@/lib/i18n";
 
-const monthNames = [
-  "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
-  "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre",
-];
+const monthNames = {
+  es: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+  en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+};
 
-const dayNames = ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"];
+const dayNames = {
+  es: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"],
+  en: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+};
 
 // Simula días disponibles (en un sistema real esto vendría de una API/DB)
 const getAvailableDays = (year: number, month: number) => {
@@ -31,6 +35,7 @@ interface CalendarAvailabilityProps {
 }
 
 export function CalendarAvailability({ className }: CalendarAvailabilityProps) {
+  const { t, lang } = useI18n();
   const today = new Date();
   const [year, setYear] = useState(today.getFullYear());
   const [month, setMonth] = useState(today.getMonth());
@@ -70,7 +75,7 @@ export function CalendarAvailability({ className }: CalendarAvailabilityProps) {
 
   return (
     <div className={cn("rounded-2xl border border-gray-100 bg-white p-6 shadow-sm", className)}>
-      <h3 className="text-lg font-bold text-gray-900 font-heading mb-4">Disponibilidad</h3>
+      <h3 className="text-lg font-bold text-gray-900 font-heading mb-4">{t("cal.title")}</h3>
 
       <div className="flex items-center justify-between mb-6">
         <button
@@ -80,7 +85,7 @@ export function CalendarAvailability({ className }: CalendarAvailabilityProps) {
           <ChevronLeft className="h-5 w-5" />
         </button>
         <span className="text-sm font-semibold text-gray-700">
-          {monthNames[month]} {year}
+          {monthNames[lang][month]} {year}
         </span>
         <button
           onClick={nextMonth}
@@ -91,7 +96,7 @@ export function CalendarAvailability({ className }: CalendarAvailabilityProps) {
       </div>
 
       <div className="grid grid-cols-7 gap-1 mb-2">
-        {dayNames.map((day) => (
+        {dayNames[lang].map((day) => (
           <div key={day} className="text-center text-xs font-semibold text-gray-400 py-1">
             {day}
           </div>
@@ -129,17 +134,17 @@ export function CalendarAvailability({ className }: CalendarAvailabilityProps) {
 
       <div className="mt-4 flex items-center gap-4 text-xs text-gray-400">
         <span className="flex items-center gap-1">
-          <span className="inline-block h-3 w-3 rounded-full bg-tropical-green-600" /> Disponible
+          <span className="inline-block h-3 w-3 rounded-full bg-tropical-green-600" /> {t("cal.available")}
         </span>
         <span className="flex items-center gap-1">
-          <span className="inline-block h-3 w-3 rounded-full bg-gray-200" /> No disponible
+          <span className="inline-block h-3 w-3 rounded-full bg-gray-200" /> {t("cal.unavailable")}
         </span>
       </div>
 
       {selectedDay && (
         <div className="mt-4 rounded-xl bg-tropical-green-50 p-3 text-center">
           <p className="text-sm font-semibold text-tropical-green-700">
-            {selectedDay} de {monthNames[month]} del {year} — Disponible
+            {t("cal.line").replace("{day}", String(selectedDay)).replace("{month}", monthNames[lang][month]).replace("{year}", String(year))}
           </p>
         </div>
       )}

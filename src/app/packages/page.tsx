@@ -6,9 +6,10 @@ import { Check, Sparkles, ArrowRight, Clock, MapPin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { packages } from "@/lib/data";
+import { useI18n } from "@/lib/i18n";
 
 export default function PackagesPage() {
+  const { t, packages } = useI18n();
   return (
     <div className="pb-24">
       {/* Banner */}
@@ -22,12 +23,12 @@ export default function PackagesPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/60 to-black/75" />
         </div>
         <div className="relative z-10 mx-auto max-w-4xl px-4 sm:pt-28 text-center text-white">
-          <Badge variant="accent" className="mb-4">Planes Completos</Badge>
+          <Badge variant="accent" className="mb-4">{t("pp.badge")}</Badge>
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold font-heading drop-shadow-md">
-            Paquetes Todo Incluido
+            {t("pp.title")}
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-green-100 font-sans drop-shadow-sm">
-            Diseñados para tu comodidad. Hoteles, tours, transporte y guías organizados para que solo disfrutes.
+            {t("pp.desc")}
           </p>
         </div>
       </section>
@@ -53,7 +54,7 @@ export default function PackagesPage() {
                   {pkg.popular && (
                     <div className="absolute top-4 left-4">
                       <Badge variant="default" className="gap-1 bg-tropical-green-600 text-white font-bold shadow-lg">
-                        <Sparkles className="h-3.5 w-3.5 fill-white" /> Recomendado
+                        <Sparkles className="h-3.5 w-3.5 fill-white" /> {t("pp.recommended")}
                       </Badge>
                     </div>
                   )}
@@ -83,7 +84,7 @@ export default function PackagesPage() {
                         </span>
                       ))}
                       {pkg.features.length > 3 && (
-                        <span className="text-gray-400">+{pkg.features.length - 3} más</span>
+                        <span className="text-gray-400">{t("pp.more").replace("{n}", String(pkg.features.length - 3))}</span>
                       )}
                     </div>
 
@@ -92,7 +93,7 @@ export default function PackagesPage() {
                         variant={pkg.popular ? "default" : "outline"}
                         className="w-full font-bold flex items-center justify-center gap-2"
                       >
-                        Ver Detalles <ArrowRight className="h-4 w-4" />
+                        {t("pp.details")} <ArrowRight className="h-4 w-4" />
                       </Button>
                     </Link>
                   </div>

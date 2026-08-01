@@ -6,6 +6,7 @@ import { Footer } from "@/components/layout/footer";
 import { WhatsAppFloat } from "@/components/layout/whatsapp-float";
 import { CursorFollower } from "@/components/ui/cursor-follower";
 import { BackToTop } from "@/components/ui/back-to-top";
+import { LanguageProvider } from "@/lib/i18n";
 
 const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat" });
 const poppins = Poppins({ subsets: ["latin"], weight: ["300","400","500","600","700"], variable: "--font-poppins" });
@@ -20,12 +21,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es">
       <body className={`${montserrat.variable} ${poppins.variable} font-sans antialiased`}>
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <WhatsAppFloat />
-        <BackToTop />
-        <CursorFollower />
+        <LanguageProvider>
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+          <WhatsAppFloat />
+          <BackToTop />
+          <CursorFollower />
+        </LanguageProvider>
       </body>
     </html>
   );

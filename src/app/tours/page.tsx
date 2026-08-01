@@ -6,9 +6,10 @@ import { Clock, MapPin, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { tours } from "@/lib/data";
+import { useI18n } from "@/lib/i18n";
 
 export default function ToursPage() {
+  const { t, tours } = useI18n();
   return (
     <div className="pb-24">
       {/* Banner */}
@@ -22,12 +23,12 @@ export default function ToursPage() {
           <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/60 to-black/75" />
         </div>
         <div className="relative z-10 mx-auto max-w-4xl px-4 sm:pt-28 text-center text-white">
-          <Badge variant="accent" className="mb-4">Experiencias</Badge>
+          <Badge variant="accent" className="mb-4">{t("tours.badge")}</Badge>
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold font-heading drop-shadow-md">
-            Nuestros Tours
+            {t("tours.title")}
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-green-100 font-sans drop-shadow-sm">
-            Desde escaladas de volcanes activos hasta cascadas mágicas y tours de un día. Elige tu próxima aventura.
+            {t("tours.desc")}
           </p>
         </div>
       </section>
@@ -82,8 +83,7 @@ export default function ToursPage() {
 
                     <Link href={`/tours/${tour.id}`} className="block mt-5">
                       <Button variant="outline" className="w-full font-bold flex items-center justify-center gap-2">
-                        Ver Detalles <ArrowRight className="h-4 w-4" />
-                      </Button>
+                        {t("tours.details")} <ArrowRight className="h-4 w-4" />                      </Button>
                     </Link>
                   </div>
                 </CardContent>

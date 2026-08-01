@@ -3,10 +3,11 @@
 import { Star, Quote } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { testimonials } from "@/lib/data";
+import { useI18n } from "@/lib/i18n";
 import { motion } from "framer-motion";
 
 export function Testimonials() {
+  const { t, testimonials } = useI18n();
   return (
     <section className="relative py-24 sm:py-32 overflow-hidden bg-white">
       {/* Decorative elements */}
@@ -24,12 +25,12 @@ export function Testimonials() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <div className="text-center max-w-2xl mx-auto">
-          <Badge variant="secondary">Testimonios</Badge>
+          <Badge variant="secondary">{t("ts.badge")}</Badge>
           <h2 className="mt-4 text-3xl font-bold text-gray-900 font-heading sm:text-4xl">
-            Lo que opinan nuestros viajeros
+            {t("ts.title")}
           </h2>
           <p className="mt-4 text-gray-500 font-sans">
-            Experiencias reales de personas reales que descubrieron Nicaragua y Costa Rica con nosotros.
+            {t("ts.desc")}
           </p>
         </div>
 

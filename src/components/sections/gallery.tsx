@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Camera, ChevronRight, X, ChevronLeft } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { useI18n } from "@/lib/i18n";
 
 import { useEffect, useState, useRef } from "react";
 import { createPortal } from "react-dom";
@@ -19,6 +20,7 @@ const galleryImages = [
 ];
 
 export function Gallery() {
+  const { t } = useI18n();
   const [hovered, setHovered] = useState<number | null>(null);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const touchStartX = useRef(0);
@@ -47,12 +49,12 @@ export function Gallery() {
 
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6">
         <div className="text-center max-w-2xl mx-auto">
-          <Badge variant="secondary">Galería</Badge>
+          <Badge variant="secondary">{t("gal.badge")}</Badge>
           <h2 className="mt-4 text-3xl font-bold text-gray-900 font-heading sm:text-4xl">
-            Momentos que inspiran
+            {t("gal.title")}
           </h2>
           <p className="mt-4 text-gray-500 font-sans">
-            Cada destino guarda una historia. Mirá lo que nuestros viajeros han vivido en Centroamérica.
+            {t("gal.desc")}
           </p>
         </div>
 
@@ -109,7 +111,7 @@ export function Gallery() {
               }}
               className="absolute right-4 top-4 z-[210] rounded-full bg-white/15 p-3 text-white hover:bg-white/30 transition-colors shadow-lg"
               style={{ width: 48, height: 48 }}
-              aria-label="Cerrar"
+              aria-label={t("gal.close")}
             >
               <X className="h-6 w-6" />
             </button>
@@ -121,7 +123,7 @@ export function Gallery() {
               }}
               className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-[210] rounded-full bg-black/60 p-2 text-white hover:bg-black/80 transition-colors border border-white/20"
               style={{ width: 36, height: 36 }}
-              aria-label="Anterior"
+              aria-label={t("gal.prev")}
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
@@ -155,7 +157,7 @@ export function Gallery() {
               }}
               className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-[210] rounded-full bg-black/60 p-3.5 sm:p-4 text-white hover:bg-black/80 transition-colors border border-white/20"
               style={{ width: 36, height: 36 }}
-              aria-label="Siguiente"
+              aria-label={t("gal.next")}
             >
               <ChevronRight className="h-4 w-4" />
             </button>

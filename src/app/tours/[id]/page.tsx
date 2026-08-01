@@ -14,7 +14,7 @@ import { TourMap } from "@/components/ui/tour-map";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { tours, testimonials } from "@/lib/data";
+import { useI18n } from "@/lib/i18n";
 
 const container = {
   hidden: {},
@@ -34,6 +34,7 @@ const TrustBadge = ({ icon: Icon, text }: { icon: any; text: string }) => (
 );
 
 export default function TourDetailPage() {
+  const { t, tours, testimonials } = useI18n();
   const params = useParams();
   const tour = tours.find((t) => t.id === params.id);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
@@ -82,7 +83,7 @@ export default function TourDetailPage() {
             className="inline-flex items-center gap-1.5 text-sm text-green-200 hover:text-white transition-colors mb-6 group"
           >
             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-            Volver a tours
+            {t("td.back")}
           </Link>
           <div className="max-w-3xl">
             {tour.tag && (
@@ -97,7 +98,7 @@ export default function TourDetailPage() {
               {tour.description}
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              {[tour.duration, tour.location, `$${tour.price}/pers`].map((tag) => (
+              {[tour.duration, tour.location, `$${tour.price}{t("td.perPers")}`].map((tag) => (
                 <span
                   key={tag}
                   className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm border border-white/10"
@@ -235,10 +236,10 @@ export default function TourDetailPage() {
               variants={itemReveal}
               className="flex flex-wrap items-center gap-3"
             >
-              <TrustBadge icon={Shield} text="Reserva 100% segura" />
-              <TrustBadge icon={HeartHandshake} text="Cancelación gratuita" />
-              <TrustBadge icon={Users} text="Grupos reducidos" />
-              <TrustBadge icon={Sun} text="Mejor precio garantizado" />
+              <TrustBadge icon={Shield} text={t("td.trust1")} />
+              <TrustBadge icon={HeartHandshake} text={t("td.trust2")} />
+              <TrustBadge icon={Users} text={t("td.trust3")} />
+              <TrustBadge icon={Sun} text={t("td.trust4")} />
             </motion.div>
 
             {/* ===== SOBRE ESTE TOUR ===== */}
@@ -251,9 +252,9 @@ export default function TourDetailPage() {
                     </div>
                     <div>
                       <h2 className="text-lg font-bold text-gray-900 font-heading">
-                        Sobre este tour
+                        {t("td.about")}
                       </h2>
-                      <p className="text-xs text-gray-500">Información general</p>
+                      <p className="text-xs text-gray-500">{t("td.aboutSub")}</p>
                     </div>
                   </div>
                   <p className="text-gray-500 leading-relaxed text-base">
@@ -271,7 +272,7 @@ export default function TourDetailPage() {
                     <div>
                       <h3 className="text-lg font-bold text-gray-900 font-heading mb-4 flex items-center gap-2">
                         <Check className="h-5 w-5 text-tropical-green-600" />
-                        Incluye
+                        {t("td.includes")}
                       </h3>
                       <ul className="space-y-3">
                         {tour.includes.map((item) => (
@@ -287,7 +288,7 @@ export default function TourDetailPage() {
                     <div>
                       <h3 className="text-lg font-bold text-gray-900 font-heading mb-4 flex items-center gap-2">
                         <MapPin className="h-5 w-5 text-tropical-green-600" />
-                        Detalles
+                        {t("td.details")}
                       </h3>
                       <ul className="space-y-3">
                         {tour.details.map((item) => (
@@ -317,11 +318,11 @@ export default function TourDetailPage() {
                     <div className="flex items-center gap-2 text-tropical-yellow-300 mb-2">
                       <Sparkles className="h-5 w-5" />
                       <span className="text-xs font-bold uppercase tracking-wider">
-                        Vive la experiencia
+                        {t("td.live")}
                       </span>
                     </div>
                     <h2 className="text-2xl font-bold text-white font-heading">
-                      Experiencias
+                      {t("td.experiences")}
                     </h2>
                   </div>
                 </div>
@@ -355,9 +356,9 @@ export default function TourDetailPage() {
                     </div>
                     <div>
                       <h2 className="text-lg font-bold text-gray-900 font-heading">
-                        Itinerario
+                        {t("td.itinerary")}
                       </h2>
-                      <p className="text-xs text-gray-500">Día a día del tour</p>
+                      <p className="text-xs text-gray-500">{t("td.itinerarySub")}</p>
                     </div>
                   </div>
                   <div className="relative">
@@ -395,7 +396,7 @@ export default function TourDetailPage() {
                       </div>
                       <div>
                         <h3 className="text-lg font-bold text-gray-900 font-heading">
-                          Punto de Encuentro
+                          {t("td.meeting")}
                         </h3>
                         <p className="mt-1 max-w-lg text-sm text-gray-500 leading-relaxed">
                           {tour.meetingPoint}
@@ -414,7 +415,7 @@ export default function TourDetailPage() {
                       }
                     >
                       <MapPin className="h-4 w-4" />
-                      Ver en mapa
+                      {t("td.mapBtn")}
                     </Button>
                   </div>
                 </CardContent>
@@ -431,9 +432,9 @@ export default function TourDetailPage() {
                     </div>
                     <div>
                       <h2 className="text-lg font-bold text-gray-900 font-heading">
-                        Lo que dicen nuestros viajeros
+                        {t("td.say")}
                       </h2>
-                      <p className="text-xs text-gray-500">Opiniones reales</p>
+                      <p className="text-xs text-gray-500">{t("td.saySub")}</p>
                     </div>
                   </div>
                   <div className="grid gap-4 sm:grid-cols-3">
@@ -483,7 +484,7 @@ export default function TourDetailPage() {
             <div className="rounded-2xl border border-gray-100 bg-white shadow-xl overflow-hidden">
               <div className="bg-gradient-to-r from-tropical-green-600 to-tropical-green-700 px-6 py-4">
                 <p className="text-xs font-medium text-green-100 uppercase tracking-wider">
-                  Precio por persona
+                  {t("td.price")}
                 </p>
                 <div className="flex items-baseline gap-1">
                   <span className="text-4xl font-bold text-white">${tour.price}</span>
@@ -492,17 +493,17 @@ export default function TourDetailPage() {
               </div>
               <div className="p-6 space-y-5">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-500">Impuestos y tasas</span>
-                  <span className="font-medium text-gray-800">Incluidos</span>
+                  <span className="text-gray-500">{t("td.taxes")}</span>
+                  <span className="font-medium text-gray-800">{t("td.included")}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-500">Cancelación</span>
-                  <span className="font-medium text-green-600">Gratuita</span>
+                  <span className="text-gray-500">{t("td.cancel")}</span>
+                  <span className="font-medium text-green-600">{t("td.free")}</span>
                 </div>
                 <div className="border-t border-gray-100 pt-5">
                   <NivewayButton />
                   <p className="mt-3 text-center text-xs text-gray-400">
-                    No pierdas tu cupo. Los espacios se llenan rápido.
+                    {t("td.hurry")}
                   </p>
                 </div>
               </div>
@@ -511,12 +512,12 @@ export default function TourDetailPage() {
             {/* Quick Info */}
             <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-xl">
               <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">
-                Info rápida
+                {t("td.info")}
               </h4>
               <ul className="space-y-3">
                 <li className="flex items-center gap-3 text-sm text-gray-600">
                   <Users className="h-4 w-4 text-tropical-green-600" />
-                  Máx. 8 personas
+                  {t("td.maxPeople")}
                 </li>
                 <li className="flex items-center gap-3 text-sm text-gray-600">
                   <Clock className="h-4 w-4 text-tropical-green-600" />
@@ -528,7 +529,7 @@ export default function TourDetailPage() {
                 </li>
                 <li className="flex items-center gap-3 text-sm text-gray-600">
                   <Shield className="h-4 w-4 text-tropical-green-600" />
-                  Guía certificado
+                  {t("td.certGuide")}
                 </li>
               </ul>
             </div>
@@ -536,7 +537,7 @@ export default function TourDetailPage() {
             {/* Map */}
             <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-xl">
               <h4 className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-4">
-                Ubicación
+                {t("td.location")}
               </h4>
               <TourMap lat={tour.lat} lng={tour.lng} location={tour.location} />
             </div>

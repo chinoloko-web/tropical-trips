@@ -6,15 +6,17 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { siteConfig, tours } from "@/lib/data";
+import { useI18n } from "@/lib/i18n";
 import { motion } from "framer-motion";
 
 const benefits = [
-  { icon: Clock, text: "Respuesta en menos de 24 horas" },
-  { icon: Check, text: "Sin compromiso ni costo" },
-  { icon: MessageCircle, text: "Atención personalizada" },
+  { icon: Clock, text: "ct.b1" },
+  { icon: Check, text: "ct.b2" },
+  { icon: MessageCircle, text: "ct.b3" },
 ];
 
 export default function ContactPage() {
+  const { t } = useI18n();
   const [form, setForm] = useState({ name: "", email: "", phone: "", message: "", tour: "" });
 
   const inputClass =
@@ -34,9 +36,9 @@ export default function ContactPage() {
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/10" />
         </div>
         <div className="relative z-10 mx-auto max-w-4xl px-4 sm:pt-28 text-center text-white">
-          <Badge variant="accent" className="mb-4">Contacto</Badge>
+          <Badge variant="accent" className="mb-4">{t("ct.badge")}</Badge>
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold font-heading drop-shadow-md leading-tight">
-            Hablemos de tu <span className="bg-gradient-to-r from-tropical-yellow-300 to-tropical-yellow-400 bg-clip-text text-transparent">Aventura</span>
+            {t("ct.title1")} <span className="bg-gradient-to-r from-tropical-yellow-300 to-tropical-yellow-400 bg-clip-text text-transparent">{t("ct.title2")}</span>
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg text-green-100 font-sans drop-shadow-sm">
             Diseñemos juntos la historia de tu próximo viaje por Nicaragua y Costa Rica.
@@ -57,7 +59,7 @@ export default function ContactPage() {
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-tropical-green-100 text-tropical-green-600">
                 <b.icon className="h-4 w-4" />
               </div>
-              <span>{b.text}</span>
+              <span>{t(b.text)}</span>
             </div>
           ))}
         </motion.div>
@@ -81,9 +83,9 @@ export default function ContactPage() {
                       <MessageCircle className="h-6 w-6" />
                     </div>
                     <div>
-                      <h2 className="text-2xl font-bold font-heading text-gray-900">Envíanos un Mensaje</h2>
+                      <h2 className="text-2xl font-bold font-heading text-gray-900">{t("ct.formTitle")}</h2>
                       <p className="text-sm text-gray-500 font-sans mt-0.5">
-                        Completa el formulario y te responderemos a la brevedad.
+                        {t("ct.formSub")}
                       </p>
                     </div>
                   </div>
@@ -95,11 +97,11 @@ export default function ContactPage() {
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div>
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
-                        Nombre Completo <span className="text-tropical-green-600">*</span>
+                        {t("ct.lName")} <span className="text-tropical-green-600">*</span>
                       </label>
                       <input
                         className={inputClass}
-                        placeholder="Tu nombre"
+                        placeholder={t("ct.pName")}
                         required
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
@@ -107,12 +109,12 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
-                        Correo Electrónico <span className="text-tropical-green-600">*</span>
+                        {t("ct.lEmail")} <span className="text-tropical-green-600">*</span>
                       </label>
                       <input
                         className={inputClass}
                         type="email"
-                        placeholder="tu@correo.com"
+                        placeholder={t("ct.pEmail")}
                         required
                         value={form.email}
                         onChange={(e) => setForm({ ...form, email: e.target.value })}
@@ -123,31 +125,31 @@ export default function ContactPage() {
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div>
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
-                        Teléfono / WhatsApp
+                        {t("ct.lPhone")}
                       </label>
                       <input
                         className={inputClass}
-                        placeholder="+506 8888 8888"
+                        placeholder={t("ct.pPhone")}
                         value={form.phone}
                         onChange={(e) => setForm({ ...form, phone: e.target.value })}
                       />
                     </div>
                     <div>
                       <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
-                        Tour de Interés
+                        {t("ct.lTour")}
                       </label>
                       <select
                         className={`${inputClass} appearance-none cursor-pointer`}
                         value={form.tour}
                         onChange={(e) => setForm({ ...form, tour: e.target.value })}
                       >
-                        <option value="">Selecciona un tour</option>
+                        <option value="">{t("ct.pSelect")}</option>
                         {tours.map((t) => (
                           <option key={t.id} value={t.name}>
                             {t.name}
                           </option>
                         ))}
-                        <option value="A medida">Itinerario personalizado</option>
+                        <option value="A medida">{t("ct.optCustom")}</option>
                         <option value="Otro">Otro / Consulta general</option>
                       </select>
                     </div>
@@ -155,7 +157,7 @@ export default function ContactPage() {
 
                   <div>
                     <label className="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">
-                      Mensaje <span className="text-tropical-green-600">*</span>
+                      {t("ct.lMessage")} <span className="text-tropical-green-600">*</span>
                     </label>
                     <textarea
                       className={`${inputClass} min-h-[150px] resize-none`}
@@ -172,7 +174,7 @@ export default function ContactPage() {
                     size="lg"
                     className="w-full font-bold flex items-center justify-center gap-2 mt-4 shadow-xl shadow-tropical-green-600/25 hover:shadow-tropical-green-600/40 transition-shadow"
                   >
-                    <Send className="h-5 w-5" /> Enviar Mensaje
+                    <Send className="h-5 w-5" /> {t("ct.submit")}
                     <ArrowRight className="h-4 w-4" />
                   </Button>
 
@@ -250,7 +252,7 @@ export default function ContactPage() {
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-2.5 rounded-xl bg-gray-50 px-4 py-3 border border-gray-100">
                   <item.icon className="h-4 w-4 text-tropical-green-600 shrink-0" />
-                  <span className="text-xs font-semibold text-gray-600">{item.text}</span>
+                  <span className="text-xs font-semibold text-gray-600">{t(item.text)}</span>
                 </div>
               ))}
             </div>

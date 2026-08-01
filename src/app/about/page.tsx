@@ -5,20 +5,21 @@ import { Heart, Globe, Shield, Star, Users, MapPin, Quote, Target, Eye, Award, C
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { teamMembers, stats, siteConfig } from "@/lib/data";
+import { stats, siteConfig } from "@/lib/data";
+import { useI18n } from "@/lib/i18n";
 
 const values = [
-  { icon: Heart, title: "Pasión", desc: "Amamos lo que hacemos y se nota en cada experiencia y detalle.", color: "from-pink-500 to-rose-500" },
-  { icon: Globe, title: "Autenticidad", desc: "Experiencias reales, conectando con las comunidades locales.", color: "from-tropical-green-500 to-emerald-500" },
-  { icon: Shield, title: "Seguridad", desc: "Guías capacitados, transporte confiable y protocolos de seguridad.", color: "from-blue-500 to-indigo-500" },
-  { icon: Star, title: "Excelencia", desc: "Cuidamos cada detalle para garantizar tu viaje soñado.", color: "from-yellow-400 to-amber-500" },
+  { icon: Heart, color: "from-pink-500 to-rose-500" },
+  { icon: Globe, color: "from-tropical-green-500 to-emerald-500" },
+  { icon: Shield, color: "from-blue-500 to-indigo-500" },
+  { icon: Star, color: "from-yellow-400 to-amber-500" },
 ];
 
 const highlights = [
-  { icon: MapPin, title: "2 Países", desc: "Nicaragua y Costa Rica, los destinos más biodiversos de Centroamérica." },
-  { icon: Award, title: "13+ Años", desc: "De experiencia guiando viajeros de todo el mundo." },
-  { icon: Users, title: "Guías Locales", desc: "Conocimiento auténtico de cada rincón, cultura e historia." },
-  { icon: Heart, title: "Viajes a Medida", desc: "Cada itinerario se diseña pensando en tus sueños." },
+  { icon: MapPin },
+  { icon: Award },
+  { icon: Users },
+  { icon: Heart },
 ];
 
 const fadeUp = {
@@ -27,6 +28,7 @@ const fadeUp = {
 };
 
 export default function AboutPage() {
+  const { t, teamMembers } = useI18n();
   return (
     <div className="pb-24">
       {/* ===== HERO ===== */}
@@ -34,18 +36,18 @@ export default function AboutPage() {
         <div className="absolute inset-0">
           <img
             src="/images/general/IMG_20250418_151723.jpg"
-            alt="Nosotros"
+            alt={t("ab.badge")}
             className="h-full w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-black/85 via-black/60 to-black/75" />
         </div>
         <div className="relative z-10 mx-auto max-w-4xl px-4 sm:pt-28 text-center text-white">
-          <Badge variant="accent" className="mb-4">Nosotros</Badge>
+          <Badge variant="accent" className="mb-4">{t("ab.badge")}</Badge>
           <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold font-heading drop-shadow-md">
-            Somos Tropical Trips & Travel
+            {t("ab.title")}
           </h1>
           <p className="mx-auto mt-4 max-w-2xl text-base sm:text-lg text-green-100 font-sans drop-shadow-sm">
-            Nacimos con una misión: mostrar al mundo la belleza natural, la aventura y la cultura auténtica de Nicaragua y Costa Rica.
+            {t("ab.desc")}
           </p>
         </div>
       </section>
@@ -55,7 +57,7 @@ export default function AboutPage() {
         <div className="-mt-12 sm:-mt-16 relative z-20 grid grid-cols-2 gap-4 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-tropical-green-700 via-tropical-green-600 to-emerald-700 p-5 sm:p-8 text-white shadow-2xl sm:grid-cols-4 border border-white/10">
           {stats.map((s, idx) => (
             <motion.div
-              key={s.label}
+              key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -63,7 +65,7 @@ export default function AboutPage() {
               className="text-center"
             >
               <p className="text-2xl sm:text-4xl font-extrabold font-heading drop-shadow-sm">{s.value}</p>
-              <p className="mt-1 text-[10px] sm:text-sm text-green-100 font-medium">{s.label}</p>
+              <p className="mt-1 text-[10px] sm:text-sm text-green-100 font-medium">{t(`stats.${idx + 1}`)}</p>
             </motion.div>
           ))}
         </div>
@@ -81,19 +83,19 @@ export default function AboutPage() {
         >
           <div className="grid gap-12 lg:grid-cols-2 items-center">
             <motion.div variants={fadeUp}>
-              <Badge variant="secondary">Nuestra Historia</Badge>
+              <Badge variant="secondary">{t("ab.storyBadge")}</Badge>
               <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-gray-900 font-heading leading-tight">
-                Más que un tour,<br />una <span className="text-tropical-green-600">experiencia de vida</span>
+                {t("ab.storyTitle1")}<br />{t("ab.storyTitle2")}
               </h2>
               <div className="mt-6 space-y-4 text-gray-600 font-sans leading-relaxed">
                 <p>
-                  Tropical Trips & Travel nació del amor por Centroamérica. Somos un equipo de guías locales apasionados que decidimos unir fuerzas para mostrarle al mundo los tesoros escondidos de Nicaragua y Costa Rica.
+                  {t("ab.para1")}
                 </p>
                 <p>
                   Desde las calles coloniales de Granada hasta las aguas turquesa del Río Celeste, pasando por volcanes activos, bosques nubosos y playas paradisíacas — cada ruta que diseñamos busca conectarte con la esencia de nuestra tierra.
                 </p>
                 <p>
-                  No creemos en los tours genéricos. Cada viaje lo construimos contigo, basándonos en tus intereses, tu ritmo y tus sueños. Porque para nosotros, no es un viaje — es la historia que vas a contar.
+                  {t("ab.para2")}
                 </p>
               </div>
             </motion.div>
@@ -138,9 +140,9 @@ export default function AboutPage() {
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-tropical-green-600 text-white shadow-lg mb-6">
                     <Target className="h-7 w-7" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 font-heading">Nuestra Misión</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 font-heading">{t("ab.missionTitle")}</h3>
                   <p className="mt-4 text-gray-600 leading-relaxed font-sans">
-                    Transformar cada viaje en una experiencia inolvidable, conectando a nuestros viajeros con la autenticidad, la naturaleza y la cultura de Centroamérica a través de guías locales apasionados y un servicio personalizado.
+                    {t("ab.missionText")}
                   </p>
                 </CardContent>
               </Card>
@@ -151,9 +153,9 @@ export default function AboutPage() {
                   <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-tropical-yellow-500 text-white shadow-lg mb-6">
                     <Eye className="h-7 w-7" />
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 font-heading">Nuestra Visión</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 font-heading">{t("ab.visionTitle")}</h3>
                   <p className="mt-4 text-gray-600 leading-relaxed font-sans">
-                    Ser la agencia de viajes líder en Centroamérica, reconocida por nuestra autenticidad, responsabilidad con el medio ambiente y la capacidad de crear historias que nuestros viajeros llevan en el corazón para siempre.
+                    {t("ab.visionText")}
                   </p>
                 </CardContent>
               </Card>
@@ -170,22 +172,22 @@ export default function AboutPage() {
           className="mt-20 sm:mt-28"
         >
           <div className="text-center">
-            <Badge variant="secondary">¿Por qué nosotros?</Badge>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-gray-900 font-heading">Viaja con confianza</h2>
+            <Badge variant="secondary">{t("ab.whyBadge")}</Badge>
+            <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-gray-900 font-heading">{t("ab.whyTitle")}</h2>
             <p className="mt-4 text-gray-500 max-w-xl mx-auto font-sans">
-              No somos una agencia más. Somos locales, apasionados y comprometidos con tu experiencia.
+              {t("ab.whyDesc")}
             </p>
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {highlights.map((h, idx) => (
-              <motion.div key={h.title} variants={fadeUp}>
+              <motion.div key={idx} variants={fadeUp}>
                 <Card className="h-full border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 bg-white group">
                   <CardContent className="p-6 sm:p-8">
                     <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-tropical-green-50 text-tropical-green-600 group-hover:bg-tropical-green-600 group-hover:text-white transition-all duration-300 shadow-md">
                       <h.icon className="h-6 w-6" />
                     </div>
-                    <h3 className="mt-5 font-bold text-gray-900 font-heading text-lg">{h.title}</h3>
-                    <p className="mt-2 text-sm text-gray-500 leading-relaxed font-sans">{h.desc}</p>
+                    <h3 className="mt-5 font-bold text-gray-900 font-heading text-lg">{t(`ab.h${idx + 1}`)}</h3>
+                    <p className="mt-2 text-sm text-gray-500 leading-relaxed font-sans">{t(`ab.h${idx + 1}d`)}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -202,23 +204,23 @@ export default function AboutPage() {
           className="mt-20 sm:mt-28"
         >
           <div className="text-center">
-            <Badge variant="secondary">Nuestra Esencia</Badge>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-gray-900 font-heading">Valores que nos definen</h2>
+            <Badge variant="secondary">{t("ab.valuesBadge")}</Badge>
+            <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-gray-900 font-heading">{t("ab.valuesTitle")}</h2>
             <p className="mt-4 text-gray-500 max-w-xl mx-auto font-sans">
-              Guiamos cada paso de tu aventura basándonos en la responsabilidad, la honestidad y el respeto local.
+              {t("ab.valuesDesc")}
             </p>
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((v, idx) => (
-              <motion.div key={v.title} variants={fadeUp}>
+              <motion.div key={idx} variants={fadeUp}>
                 <Card className="text-center h-full border-gray-100 hover:shadow-xl hover:-translate-y-2 transition-all duration-300 bg-white group overflow-hidden">
                   <div className={`h-2 w-full bg-gradient-to-r ${v.color}`} />
                   <CardContent className="p-8">
                     <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-gray-50 text-tropical-green-600 group-hover:bg-tropical-green-600 group-hover:text-white transition-all duration-300 shadow-md">
                       <v.icon className="h-7 w-7" />
                     </div>
-                    <h3 className="mt-6 font-bold text-gray-900 text-lg font-heading">{v.title}</h3>
-                    <p className="mt-3 text-sm text-gray-500 leading-relaxed font-sans">{v.desc}</p>
+                    <h3 className="mt-6 font-bold text-gray-900 text-lg font-heading">{t(`ab.v${idx + 1}`)}</h3>
+                    <p className="mt-3 text-sm text-gray-500 leading-relaxed font-sans">{t(`ab.v${idx + 1}d`)}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -236,11 +238,11 @@ export default function AboutPage() {
         >
           <div className="text-center">
             <Badge variant="secondary" className="flex items-center gap-1.5 mx-auto w-fit">
-              <Users className="h-4 w-4" /> Equipo
+              <Users className="h-4 w-4" /> {t("ab.teamBadge")}
             </Badge>
-            <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-gray-900 font-heading">Conocé a tus guías</h2>
+            <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-gray-900 font-heading">{t("ab.teamTitle")}</h2>
             <p className="mx-auto mt-4 max-w-xl text-gray-500 font-sans">
-              Apasionados profesionales locales listos para mostrarte la historia, tradiciones y naturaleza silvestre de Centroamérica.
+              {t("ab.teamDesc")}
             </p>
           </div>
 
@@ -294,20 +296,20 @@ export default function AboutPage() {
             <div className="relative z-10 max-w-2xl mx-auto space-y-6">
               <Quote className="h-10 w-10 mx-auto text-tropical-yellow-400/60" />
               <h2 className="text-3xl sm:text-4xl font-bold text-white font-heading drop-shadow-md">
-                ¿Listo para tu próxima historia?
+                {t("ab.ctaTitle")}
               </h2>
               <p className="text-green-100 font-sans text-base sm:text-lg leading-relaxed max-w-lg mx-auto">
-                Dejanos ser parte de tu viaje. Te prometemos que no será solo un destino — será una experiencia que recordarás siempre.
+                {t("ab.ctaDesc")}
               </p>
               <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a href="/contact" className="w-full sm:w-auto">
                   <Button variant="accent" size="lg" className="w-full sm:w-auto font-bold flex items-center justify-center gap-2">
-                    <MessageCircle className="h-5 w-5" /> Contáctanos
+                    <MessageCircle className="h-5 w-5" /> {t("ab.ctaContact")}
                   </Button>
                 </a>
                 <a href="/tours" className="w-full sm:w-auto">
                   <Button variant="white" size="lg" className="w-full sm:w-auto font-bold flex items-center justify-center gap-2">
-                    Ver Tours <ChevronRight className="h-5 w-5" />
+                    {t("ab.ctaTours")} <ChevronRight className="h-5 w-5" />
                   </Button>
                 </a>
               </div>
