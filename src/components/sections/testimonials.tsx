@@ -66,6 +66,8 @@ export function Testimonials() {
                     <img
                       src={t.image}
                       alt={t.name}
+                      loading="lazy"
+                      decoding="async"
                       className="h-11 w-11 rounded-full object-cover shadow-sm bg-gray-100 border-2 border-gray-50"
                     />
                     <div>

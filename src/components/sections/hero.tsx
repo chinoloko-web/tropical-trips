@@ -29,6 +29,7 @@ export function Hero() {
 
   return (
     <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+      <link rel="preload" as="image" href={clientGallery[0]} fetchPriority="high" />
       {/* Background images */}
       <div className="absolute inset-0">
         <AnimatePresence mode="wait">
@@ -36,6 +37,7 @@ export function Hero() {
             key={index}
             src={clientGallery[index]}
             alt=""
+            fetchPriority={index === 0 ? "high" : "low"}
             className="absolute inset-0 h-full w-full object-cover"
             initial={{ opacity: 0, scale: 1.08 }}
             animate={{ opacity: 1, scale: 1 }}

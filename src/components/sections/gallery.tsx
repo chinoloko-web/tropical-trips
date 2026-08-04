@@ -9,14 +9,14 @@ import { useEffect, useState, useRef } from "react";
 import { createPortal } from "react-dom";
 
 const galleryImages = [
-  "/images/general/IMG_20250405_091919.jpg",
-  "/images/general/IMG_20250405_092000.jpg",
-  "/images/general/IMG_20250405_123007.jpg",
-  "/images/general/IMG_20250406_151631.jpg",
-  "/images/general/IMG_20250407_092309.jpg",
-  "/images/general/IMG_20250408_123720.jpg",
-  "/images/general/IMG_20250408_123826.jpg",
-  "/images/general/IMG_20250408_134701.jpg",
+  "/images/general/IMG_20250405_091919.webp",
+  "/images/general/IMG_20250405_092000.webp",
+  "/images/general/IMG_20250405_123007.webp",
+  "/images/general/IMG_20250406_151631.webp",
+  "/images/general/IMG_20250407_092309.webp",
+  "/images/general/IMG_20250408_123720.webp",
+  "/images/general/IMG_20250408_123826.webp",
+  "/images/general/IMG_20250408_134701.webp",
 ];
 
 export function Gallery() {

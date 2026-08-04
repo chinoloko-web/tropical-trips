@@ -28,7 +28,7 @@ export default function ContactPage() {
       <section className="relative flex items-center justify-center overflow-hidden py-24 sm:py-0 sm:h-[45vh]">
         <div className="absolute inset-0">
           <img
-            src="/images/general/IMG_20250405_123007.jpg"
+            src="/images/general/IMG_20250405_123007.webp"
             alt=""
             className="h-full w-full object-cover"
           />

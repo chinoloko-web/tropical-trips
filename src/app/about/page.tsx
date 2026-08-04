@@ -36,7 +36,7 @@ export default function AboutPage() {
       <section className="relative flex items-center justify-center overflow-hidden py-24 sm:py-0 sm:h-[50vh]">
         <div className="absolute inset-0">
           <img
-            src="/images/general/IMG_20250418_151723.jpg"
+            src="/images/general/IMG_20250418_151723.webp"
             alt={t("ab.badge")}
             className="h-full w-full object-cover"
           />
@@ -103,21 +103,21 @@ export default function AboutPage() {
             <motion.div variants={fadeUp} className="grid grid-cols-2 gap-3 max-h-[400px] sm:max-h-[500px]">
               <div className="rounded-2xl overflow-hidden shadow-lg row-span-2">
                 <img
-                  src="/images/rio-celeste/IMG_20250401_122522.jpg"
+                  src="/images/rio-celeste/IMG_20250401_122522.webp"
                   alt="Naturaleza"
                   className="h-full w-full object-cover"
                 />
               </div>
               <div className="rounded-2xl overflow-hidden shadow-lg">
                 <img
-                  src="/images/amo-el-agua/parque-nacional-rincon-de-la-vieja-namubak5.jpg"
+                  src="/images/amo-el-agua/parque-nacional-rincon-de-la-vieja-namubak5.webp"
                   alt="Cultura"
                   className="h-full w-full object-cover"
                 />
               </div>
               <div className="rounded-2xl overflow-hidden shadow-lg">
                 <img
-                  src="/images/rio-celeste/IMG_20250404_122120.jpg"
+                  src="/images/rio-celeste/IMG_20250404_122120.webp"
                   alt="Aventura"
                   className="h-full w-full object-cover"
                 />
