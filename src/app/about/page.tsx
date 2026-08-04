@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Heart, Globe, Shield, Star, Users, MapPin, Quote, Target, Eye, Award, ChevronRight, MessageCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -307,11 +308,11 @@ export default function AboutPage() {
                     <MessageCircle className="h-5 w-5" /> {t("ab.ctaContact")}
                   </Button>
                 </a>
-                <a href="/tours" className="w-full sm:w-auto">
+                <Link href="/tours" className="w-full sm:w-auto">
                   <Button variant="white" size="lg" className="w-full sm:w-auto font-bold flex items-center justify-center gap-2">
                     {t("ab.ctaTours")} <ChevronRight className="h-5 w-5" />
                   </Button>
-                </a>
+                </Link>
               </div>
             </div>
           </div>

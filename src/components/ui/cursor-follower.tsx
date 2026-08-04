@@ -14,6 +14,7 @@ export function CursorFollower() {
 
   useEffect(() => {
     const isTouchDevice = window.matchMedia("(pointer: coarse)").matches;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsTouch(isTouchDevice);
     if (isTouchDevice) return;
 

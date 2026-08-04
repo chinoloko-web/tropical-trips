@@ -766,6 +766,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const saved = localStorage.getItem("tropical-lang");
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (saved === "en" || saved === "es") setLangState(saved);
   }, []);
 
