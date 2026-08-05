@@ -56,7 +56,7 @@ export default function PackageDetailPage() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 -mt-16 relative z-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 -mt-6 sm:-mt-16 relative z-20">
         <div className="grid gap-12 lg:grid-cols-3">
 
           {/* Main */}

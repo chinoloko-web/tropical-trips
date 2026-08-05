@@ -98,7 +98,7 @@ export default function TourDetailPage() {
               {tour.description}
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              {[tour.duration, tour.location, `$${tour.price}{t("td.perPers")}`].map((tag) => (
+              {[tour.duration, tour.location, `$${tour.price}${t("td.perPers")}`].map((tag) => (
                 <span
                   key={tag}
                   className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm border border-white/10"
@@ -115,7 +115,7 @@ export default function TourDetailPage() {
       </section>
 
       {/* ===== CONTENT ===== */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 -mt-12 sm:-mt-16 relative z-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 -mt-6 sm:-mt-16 relative z-20">
         <div className="grid gap-12 lg:grid-cols-3">
 
           {/* ===== MAIN ===== */}
