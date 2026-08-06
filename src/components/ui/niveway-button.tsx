@@ -3,7 +3,27 @@
 import { useEffect, useRef } from "react";
 import { useI18n } from "@/lib/i18n";
 
-export function NivewayButton() {
+interface NivewayButtonProps {
+  embedSrc?: string;
+  background?: string;
+  hoverBackground?: string;
+  shadow?: string;
+  radius?: number;
+  padding?: string;
+  fontSize?: number;
+  fontWeight?: number;
+}
+
+export function NivewayButton({
+  embedSrc = "https://app.niveway.com/api/public/embed/0df1a2e4-732d-46a3-bdd2-34762b41b624",
+  background = "#059669",
+  hover = "#047857",
+  shadow = "0 10px 15px -3px rgba(5,150,105,0.2)",
+  radius = 9999,
+  padding = "0 32px",
+  fontSize = 16,
+  fontWeight = 700,
+}: NivewayButtonProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { t } = useI18n();
 
@@ -13,24 +33,20 @@ export function NivewayButton() {
 
     const button = document.createElement("button");
     button.type = "button";
-    button.style.cssText =
-      "display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;border-radius:9999px;font-size:16px;font-weight:700;height:56px;padding:0 32px;transition:all 0.3s;background:#059669;color:#FFFFFF;border:0;cursor:pointer;width:100%;box-shadow:0 10px 15px -3px rgba(5,150,105,0.2);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif";
+    button.style.cssText = `display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;border-radius:${radius}px;font-size:${fontSize}px;font-weight:${fontWeight};height:auto;padding:${padding};transition:all 0.3s;background:${background};color:#FFFFFF;border:0;cursor:pointer;width:100%;box-shadow:${shadow};font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif`;
     button.textContent = t("book");
 
     button.onmouseenter = () => {
-      button.style.background = "#047857";
+      button.style.background = hover;
       button.style.transform = "translateY(-1px)";
-      button.style.boxShadow = "0 20px 25px -5px rgba(5,150,105,0.3)";
     };
     button.onmouseleave = () => {
-      button.style.background = "#059669";
+      button.style.background = background;
       button.style.transform = "translateY(0)";
-      button.style.boxShadow = "0 10px 15px -3px rgba(5,150,105,0.2)";
     };
 
     const script = document.createElement("script");
-    script.src =
-      "https://app.niveway.com/api/public/embed/0df1a2e4-732d-46a3-bdd2-34762b41b624";
+    script.src = embedSrc;
 
     div.appendChild(button);
     div.appendChild(script);
@@ -38,7 +54,7 @@ export function NivewayButton() {
     return () => {
       div.innerHTML = "";
     };
-  }, [t]);
+  }, [t, embedSrc, background, hover, shadow, radius, padding, fontSize, fontWeight]);
 
   return <div ref={containerRef} />;
 }
