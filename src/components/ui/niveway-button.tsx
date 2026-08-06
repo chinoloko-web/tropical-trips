@@ -18,7 +18,7 @@ export function NivewayButton({
     const button = document.createElement("button");
     button.type = "button";
     button.style.cssText =
-      "display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;border-radius:9999px;font-size:16px;font-weight:700;height:56px;padding:0 32px;transition:background 150ms ease, color 150ms ease;background:#059669;color:#FFFFFF;border:0;cursor:pointer;width:100%;box-shadow:0 10px 15px -3px rgba(5,150,105,0.2);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif";
+      "display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;border-radius:9999px;font-size:15px;font-weight:700;height:44px;padding:0 24px;transition:background 150ms ease, color 150ms ease;background:#059669;color:#FFFFFF;border:0;cursor:pointer;width:100%;box-shadow:0 8px 12px -3px rgba(5,150,105,0.2);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif";
     button.textContent = t("book");
 
     const applyGreen = () => {
