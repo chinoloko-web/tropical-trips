@@ -41,3 +41,32 @@ html {
     background: linear-gradient(to bottom, transparent, white 40%, white 60%, transparent);
   }
 }
+
+button.niveway-btn,
+button.niveway-btn:focus,
+button.niveway-btn:active {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  white-space: nowrap !important;
+  width: 100% !important;
+  height: 44px !important;
+  padding: 0 24px !important;
+  border: 0 !important;
+  border-radius: 9999px !important;
+  background: #059669 !important;
+  color: #ffffff !important;
+  font-family: inherit !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  box-shadow: 0 8px 12px -3px rgba(5, 150, 105, 0.2) !important;
+  transition: background 150ms ease, color 150ms ease !important;
+}
+
+button.niveway-btn:hover {
+  background: #047857 !important;
+  color: #ffffff !important;
+}
