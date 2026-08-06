@@ -17,7 +17,7 @@ export function Footer() {
             <img
               src="/logo.png"
               alt="Tropical Trips"
-              className="h-10 sm:h-12 w-auto"
+              className="h-14 sm:h-20 w-auto"
             />
             <p className="max-w-sm text-sm text-gray-300 leading-relaxed font-sans">
               {siteConfig.tagline} Descubre los mejores destinos de ecoturismo, lagos, volcanes y cultura en Nicaragua y Costa Rica guiado por expertos locales.
