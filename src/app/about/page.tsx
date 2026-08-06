@@ -55,7 +55,7 @@ export default function AboutPage() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         {/* ===== STATS ===== */}
-        <div className="-mt-6 sm:-mt-6 relative z-20 grid grid-cols-2 gap-4 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-tropical-green-700 via-tropical-green-600 to-emerald-700 p-5 sm:p-8 text-white shadow-2xl sm:grid-cols-4 border border-white/10">
+        <div className="mt-[30px] sm:mt-[30px] relative z-20 grid grid-cols-2 gap-4 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-tropical-green-700 via-tropical-green-600 to-emerald-700 p-5 sm:p-8 text-white shadow-2xl sm:grid-cols-4 border border-white/10">
           {stats.map((s, idx) => (
             <motion.div
               key={idx}

@@ -115,7 +115,7 @@ export default function TourDetailPage() {
       </section>
 
       {/* ===== CONTENT ===== */}
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 -mt-6 sm:-mt-6 relative z-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 mt-[30px] sm:mt-[30px] relative z-20">
         <div className="grid gap-12 lg:grid-cols-3">
 
           {/* ===== MAIN ===== */}
