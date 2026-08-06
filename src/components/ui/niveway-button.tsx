@@ -6,7 +6,7 @@ import { useI18n } from "@/lib/i18n";
 interface NivewayButtonProps {
   embedSrc?: string;
   background?: string;
-  hoverBackground?: string;
+  hover?: string;
   shadow?: string;
   radius?: number;
   padding?: string;
