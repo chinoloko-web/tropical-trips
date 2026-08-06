@@ -45,9 +45,6 @@ export default function PackageDetailPage() {
               {pkg.description}
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm border border-white/10">
-                <Clock className="h-4 w-4" /> {pkg.duration}
-              </span>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-tropical-green-600/30 px-4 py-2 text-sm font-bold text-white backdrop-blur-sm border border-tropical-green-400/30">
                 ${pkg.price} USD / pers
               </span>
