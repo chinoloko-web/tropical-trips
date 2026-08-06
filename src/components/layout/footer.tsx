@@ -14,9 +14,11 @@ export function Footer() {
           
           {/* Brand Info */}
           <div className="sm:col-span-2 lg:col-span-5 space-y-4 sm:space-y-5">
-            <h3 className="text-xl sm:text-2xl font-bold tracking-tight font-heading">
-              Tropical Trips & Travel
-            </h3>
+            <img
+              src="/logo.png"
+              alt="Tropical Trips"
+              className="h-10 sm:h-12 w-auto"
+            />
             <p className="max-w-sm text-sm text-gray-300 leading-relaxed font-sans">
               {siteConfig.tagline} Descubre los mejores destinos de ecoturismo, lagos, volcanes y cultura en Nicaragua y Costa Rica guiado por expertos locales.
             </p>

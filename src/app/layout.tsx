@@ -4,7 +4,6 @@ import "./globals.css";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { WhatsAppFloat } from "@/components/layout/whatsapp-float";
-import { CursorFollower } from "@/components/ui/cursor-follower";
 import { BackToTop } from "@/components/ui/back-to-top";
 import { LanguageProvider } from "@/lib/i18n";
 
@@ -27,7 +26,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Footer />
           <WhatsAppFloat />
           <BackToTop />
-          <CursorFollower />
         </LanguageProvider>
       </body>
     </html>
