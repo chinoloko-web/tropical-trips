@@ -15,14 +15,14 @@ interface NivewayButtonProps {
 }
 
 export function NivewayButton({
-  embedSrc = "https://app.niveway.com/api/public/embed/0df1a2e4-732d-46a3-bdd2-34762b41b624",
-  background = "#059669",
-  hover = "#047857",
-  shadow = "0 10px 15px -3px rgba(5,150,105,0.2)",
-  radius = 9999,
-  padding = "0 32px",
-  fontSize = 16,
-  fontWeight = 700,
+  embedSrc = "https://app.niveway.com/api/public/embed/bfc576cd-9eb3-4c1e-91ce-248caaa7cdda",
+  background = "#134046",
+  hover = "#0B2A2E",
+  shadow = "0 10px 15px -3px rgba(19,64,70,0.25)",
+  radius = 8,
+  padding = "12px 20px",
+  fontSize = 15,
+  fontWeight = 500,
 }: NivewayButtonProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { t } = useI18n();

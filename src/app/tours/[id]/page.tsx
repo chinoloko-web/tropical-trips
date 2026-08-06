@@ -346,28 +346,6 @@ export default function TourDetailPage() {
               </Card>
             </motion.div>
 
-            {tour.id === "arenal-adventure" && (
-              <motion.div variants={itemReveal}>
-                <Card className="overflow-hidden border border-gray-100 shadow-xl bg-white">
-                  <CardContent className="p-8">
-                    <h2 className="text-lg font-bold text-gray-900 font-heading mb-6">
-                      {t("td.live")}
-                    </h2>
-                    <NivewayButton
-                      embedSrc="https://app.niveway.com/api/public/embed/bfc576cd-9eb3-4c1e-91ce-248caaa7cdda"
-                      background="#134046"
-                      hover="#0e2f34"
-                      shadow="0 10px 15px -3px rgba(19,64,70,0.25)"
-                      padding="12px 20px"
-                      radius={8}
-                      fontSize={15}
-                      fontWeight={500}
-                    />
-                  </CardContent>
-                </Card>
-              </motion.div>
-            )}
-
             {/* ===== ITINERARIO ===== */}
             <motion.div variants={itemReveal}>
               <Card className="overflow-hidden border border-gray-100 shadow-xl bg-white">
